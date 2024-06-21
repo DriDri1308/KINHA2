@@ -1,0 +1,110 @@
+/* Estilos padrão para todos os dispositivos */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000; /* Cor de fundo que cobre todo o fundo da página */
+}
+
+.App {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: center;
+}
+
+.banner {
+  position: absolute;
+  top: 0;
+  left: -200%; /* Ajustado para estender até a margem esquerda */
+  right: -400%; /* Ajustado para estender até a margem direita */
+  width: 400%; /* Ajustado para cobrir toda a largura da tela */
+  height: 300px; /* Mantida a altura original */
+  background-image: url('../assets/WhatsApp Image 2024-06-16 at 20.18.19.jpeg'); /* Caminho relativo para a imagem */
+  background-size: cover;
+  background-position: center;
+  border: none; /* Remover bordas */
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Alterado para preto com transparência */
+  z-index: -1;
+}
+
+.overlay-image {
+  position: absolute;
+  bottom: 0;
+  left: 0%;
+  transform: translateX(-50%);
+  width: 350%; /* Ajusta para cobrir toda a largura */
+  height: 630px; /* Mantém a altura original */
+  background-image: url('../assets/139555469-garrafa-de-esmalte-de-unha-azul-no-fundo-preto-com-refeição-vertical-conceito-de-beleza-e.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  border: none;
+  box-shadow: none;
+}
+
+.button-container {
+  left: 20px; /* Movido para 20 pixels à direita da margem esquerda */
+  z-index: 1; /* Certifique-se de que os botões fiquem acima das imagens de fundo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Espaçamento interno dentro da borda */
+  box-sizing: border-box; /* Garante que o padding não altere o tamanho total */
+}
+
+.button-container button {
+  margin: 10px;
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: 2px solid #007bff; /* Borda azul */
+  border-radius: 20px; /* Borda arredondada */
+  background-color: transparent; /* Cor de fundo transparente */
+  color: white; /* Cor do texto */
+  transition: background-color 0.3s, color 0.3s; /* Transições suaves */
+}
+.button-container button:hover {
+  background-color: rgba(0, 123, 255, 0.2); /* Cor de fundo com transparência ao passar o mouse */
+  color: #007bff; /* Mudança de cor do texto ao passar o mouse */
+}
+
+/* Media Query para dispositivos com largura máxima de 768px (tablets e celulares) */
+@media (max-width: 768px) {
+  .banner {
+    left: -50%; /* Ajuste para dispositivos menores */
+    right: -50%; /* Ajuste para dispositivos menores */
+    width: 200%; /* Ajuste para dispositivos menores */
+  }
+
+  .overlay-image {
+    width: 100%; /* Ajusta para cobrir toda a largura */
+    height: auto; /* Mantém a proporção da imagem */
+  }
+
+  .button-container {
+    left: 0; /* Centraliza os botões em dispositivos menores */
+  }
+}
