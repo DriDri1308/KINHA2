@@ -1,0 +1,119 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: -40;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/WhatsApp Image 2024-06-16 at 20.17.27.jpeg');
+  background-size: contain; /* Ajusta o tamanho da imagem para caber no container */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Coloca a imagem de fundo atrás dos outros elementos */
+}
+
+.button-container {
+  position: absolute;
+  top: 50%;
+  left: -300px; /* Ajuste a margem esquerda conforme necessário */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start; /* Alinha os botões à esquerda */
+  padding: 20px;
+  text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
+  color: white;
+}
+
+.button-container h1 {
+  margin-bottom: 20px;
+}
+
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 10px;
+}
+
+.servico-button {
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.servico-button:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}
+#btnConfirmar {
+  margin-top: 20px; /* Espaçamento acima do botão 'Confirmar' */
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  width: 200px; /* Largura do botão */
+}
+
+#btnConfirmar:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}
+.servico-button.selecionado {
+  background-color: #007bff; /* Cor de fundo para botão selecionado */
+  color: hsl(0, 4%, 5%); /* Cor do texto quando o botão está selecionado */
+}
+.input-padrao {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.btn-padrao {
+  padding: 15px 30px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 20px;
+  background-color: #007bff;
+  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  width: 100%;
+}
+
+.btn-padrao:hover {
+  background-color: rgba(0, 123, 255, 0.8);
+}

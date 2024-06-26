@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Informações de Contato</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="App">
+    <div class="background-image"></div>
+
+    <div class="button-container">
+      <h1>Informe seus Dados de Contato</h1>
+      <form id="formAgendamento">
+        <label for="nome">Nome:</label><br>
+        <input type="text" id="nome" name="nome" class="input-padrao" required><br>
+        <label for="telefone">Telefone:</label><br>
+        <input type="tel" id="telefone" name="telefone" class="input-padrao" required><br>
+        <label for="dataHora">Data e Hora:</label><br>
+        <input type="datetime-local" id="dataHora" name="dataHora" class="input-padrao" required><br><br>
+        <button type="submit" class="btn-padrao">Confirmar Agendamento</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
