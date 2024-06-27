@@ -1,3 +1,4 @@
+// Definição dos serviços disponíveis
 const servicos = [
   { id: 1, title: 'Manicure e Pedicure', description: 'Cutícula, esmaltação comum, pedraria, desenho a mão livre, unhas naturais ou alongadas, francesinha.', price: 60.00 },
   { id: 2, title: 'Fibra de Vidro', description: 'É resistente a batida (impacto), durabilidade, aspecto natural, indicado para alongar suas unhas naturais.', price: 150.00 },
@@ -16,6 +17,7 @@ if (btnAgendamento) {
   });
 }
 
+// Função para criar os botões de serviço
 function criarBotoesDeServico() {
   const buttonContainer = document.querySelector('.button-container .button-grid');
 
@@ -27,7 +29,36 @@ function criarBotoesDeServico() {
     buttonContainer.appendChild(button);
 
     button.addEventListener('click', () => {
-      button.classList.toggle('selecionado'); // Toggle da classe 'selecionado' ao clicar
+      const servicoSelecionado = document.querySelector(`#servico-${servico.id}`);
+      if (servicoSelecionado) return; // Evita adicionar o mesmo serviço mais de uma vez
+
+      // Verifica quantos serviços já estão na cesta
+      const servicosSelecionados = document.querySelectorAll('.servico-selecionado');
+      if (servicosSelecionados.length >= 3) {
+        alert('Você só pode selecionar até três serviços.');
+        return;
+      }
+
+      // Cria um item na cesta para o serviço selecionado
+      const servicoItem = document.createElement('li');
+      servicoItem.id = `servico-${servico.id}`;
+      servicoItem.classList.add('servico-selecionado');
+      servicoItem.innerHTML = `
+        <span>${servico.title}</span>
+        <span class="descricao">${servico.description}</span>
+        <span class="preco">Valor: R$ ${servico.price.toFixed(2)}</span>
+        <button class="remover">Remover</button>
+      `;
+      
+      const listaServicosSelecionados = document.getElementById('servicos-selecionados');
+      listaServicosSelecionados.appendChild(servicoItem);
+
+      // Adiciona evento para remover o serviço da cesta
+      const btnRemover = servicoItem.querySelector('.remover');
+      btnRemover.addEventListener('click', () => {
+        servicoItem.remove();
+        button.classList.remove('selecionado');
+      });
     });
   });
 }
@@ -36,28 +67,15 @@ function criarBotoesDeServico() {
 window.onload = function() {
   criarBotoesDeServico();
 
-  const btnAgendamento = document.getElementById('btnAgendamento');
-  if (btnAgendamento) {
-    btnAgendamento.addEventListener('click', () => {
-      window.location.href = 'servicos.html'; // Redireciona para a página de serviços
-    });
-  }
-
+  // Lógica para confirmar os serviços selecionados
   const btnConfirmar = document.getElementById('btnConfirmar');
   if (btnConfirmar) {
     btnConfirmar.addEventListener('click', () => {
-      let servicosSelecionados = [];
-      const servicoButtons = document.querySelectorAll('.servico-button');
-
-      servicoButtons.forEach(button => {
-        if (button.classList.contains('selecionado')) {
-          const servicoId = parseInt(button.dataset.value);
-          const servicoSelecionado = servicos.find(servico => servico.id === servicoId);
-          servicosSelecionados.push(servicoSelecionado);
-        }
-      });
-
-      console.log('Serviços selecionados:', servicosSelecionados);
+      const servicosSelecionados = document.querySelectorAll('.servico-selecionado');
+      if (servicosSelecionados.length === 0) {
+        alert('Selecione pelo menos um serviço.');
+        return;
+      }
 
       // Redirecionamento para a página de contato após selecionar os serviços
       window.location.href = 'contato.html'; // Exemplo de redirecionamento para a página de contato

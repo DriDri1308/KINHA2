@@ -13,7 +13,7 @@ body, html {
 }
 
 .App {
-  position: relative;
+  
   width: 100%;
   height: 100%;
   display: flex;
@@ -25,10 +25,9 @@ body, html {
 .background-image {
   position: fixed;
   top: 0;
-  left: -40;
+  left: -40px; /* Corrigido para -40px */
   width: 100%;
   height: 100%;
-  background-image: url('assets/WhatsApp Image 2024-06-16 at 20.17.27.jpeg');
   background-size: contain; /* Ajusta o tamanho da imagem para caber no container */
   background-position: center;
   background-repeat: no-repeat;
@@ -37,8 +36,8 @@ body, html {
 
 .button-container {
   position: absolute;
-  top: 50%;
-  left: -300px; /* Ajuste a margem esquerda conforme necessário */
+  top: 30%;
+  left: 600px; /* Ajuste a margem esquerda conforme necessário */
   transform: translateY(-50%);
   display: flex;
   flex-direction: column;
@@ -73,6 +72,7 @@ body, html {
 .servico-button:hover {
   background-color: rgba(0, 123, 255, 0.8);
 }
+
 #btnConfirmar {
   margin-top: 20px; /* Espaçamento acima do botão 'Confirmar' */
   padding: 15px 30px;
@@ -89,29 +89,70 @@ body, html {
 #btnConfirmar:hover {
   background-color: rgba(0, 123, 255, 0.8);
 }
+
 .servico-button.selecionado {
   background-color: #007bff; /* Cor de fundo para botão selecionado */
   color: hsl(0, 4%, 5%); /* Cor do texto quando o botão está selecionado */
 }
-.input-padrao {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+
+/* Estilos para a cesta de serviços selecionados */
+
+.cesta-container {
+  margin-top: 700px; /* Margem superior para distanciar da .button-container */
+  margin-bottom: 10px; /* Espaço entre a cesta e o rodapé */
+  background-color: #f9f9f9;
+  padding: 50px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 100%;
-  margin-bottom: 10px;
+  max-width: 700px; /* Ajuste da largura máxima para 900px */
+  text-align: left; /* Ajusta o alinhamento do texto para a esquerda */
 }
 
-.btn-padrao {
-  padding: 15px 30px;
-  font-size: 16px;
-  cursor: pointer;
+.cesta-container h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+#servicos-selecionados {
+  list-style-type: none;
+  padding: 0;
+}
+
+.servico-selecionado {
+  margin-bottom: 10px;
+  padding: 15px; /* Aumento do padding para 15px */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.servico-selecionado .remover {
+  padding: 5px 10px;
+  font-size: 12px;
+  background-color: #dc3545;
+  color: #fff;
   border: none;
-  border-radius: 20px;
-  background-color: #007bff;
-  color: white;
-  transition: background-color 0.3s, color 0.3s;
-  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.servico-selecionado .remover:hover {
+  background-color: #c82333;
+}
+
+.servico-selecionado .descricao {
+  flex: 1;
+  margin: 0 10px;
+  font-size: 14px; /* Ajuste da fonte para 14px */
+}
+
+.servico-selecionado .preco {
+  font-weight: bold;
 }
 
 .btn-padrao:hover {

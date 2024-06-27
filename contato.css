@@ -1,0 +1,107 @@
+
+Copiar código
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.background-image {
+  position: fixed;
+  top: 0;
+  left: -40px; /* Corrigido para -40px */
+  width: 100%;
+  height: 100%;
+  background-size: contain; /* Ajusta o tamanho da imagem para caber no container */
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: -1; /* Coloca a imagem de fundo atrás dos outros elementos */
+}
+
+.button-container {
+    position: absolute;
+    top: 15%;
+    left: -350px; /* Ajustado para alinhar à esquerda da tela */
+    display: flex;
+    flex-direction: column;
+    align-items: 50px; /* Alinha à esquerda */
+    padding: 20px;
+    color: white;
+  }
+  
+  .button-container h1 {
+    margin-bottom: 20px;
+  }
+  
+  .input-padrao {
+    padding: 10px 20px; /* Dimensões menores lateralmente */
+    font-size: 14px; /* Tamanho da fonte menor */
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    margin-bottom: 10px; /* Espaçamento inferior */
+  }
+  
+  .btn-padrao {
+    padding: 15px 40px; /* Aumenta a largura para destacar */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    width: auto; /* Largura automática para ajustar ao conteúdo */
+    margin-top: 10px; /* Espaçamento superior */
+  }
+  
+  .btn-padrao:hover {
+    background-color: rgba(0, 123, 255, 0.8);
+  }
+  
+  .horarios-disponiveis {
+    display: flex;
+    justify-content: flex-start; /* Alinha os botões de horário à esquerda */
+    margin-top: 10px; /* Espaçamento superior */
+  }
+  
+  .horarios-disponiveis button {
+    padding: 10px 20px; /* Dimensões menores lateralmente */
+    font-size: 14px; /* Tamanho da fonte menor */
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 10px; /* Espaçamento entre os botões */
+  }
+  
+  .horarios-disponiveis button:last-child {
+    margin-right: 0; /* Remove o espaço do último botão */
+  }
+  
+  .horarios-disponiveis button:hover {
+    background-color: rgba(0, 123, 255, 0.8);
+  }
