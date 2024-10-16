@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agendamento de Serviços</title>
+  <link rel="stylesheet" href="contato.css">
+</head>
+<body>
+  <div class="App">
+    <div class="background-image" style="background-image: url('assets/WhatsApp Image 2024-06-16 at 20.17.27.jpeg');"></div>
+    <div class="button-container">
+      <h1>Informe seus Dados</h1>
+      <form id="formAgendamento" onsubmit="return false;">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" class="input-padrao" required>
+
+        <label for="telefone">Telefone:</label>
+        <input type="tel" id="telefone" name="telefone" class="input-padrao" required>
+
+        <button type="button" id="mostrarDatasBtn" class="btn-padrao">Mostrar Datas Disponíveis</button>
+        <div class="datas-disponiveis" id="datasDisponiveis" style="display: none;"></div>
+
+        <h2></h2>
+        <div class="horarios-disponiveis" id="horariosDisponiveis" style="display: none;"></div>
+
+        <button type="submit" id="confirmarBtn" class="btn-padrao">Confirmar Agendamento</button>
+      </form>
+      <div id="detalhesAgendamento"></div>
+    </div>
+  </div>
+  <script src="script.jsx"></script>
+</body>
+</html>
