@@ -47,8 +47,10 @@ body, html {
   color: white;
 }
 
+/* Fonte do título alterada para Script */
 .button-container h1 {
   margin-bottom: 20px;
+  font-family: 'Script', cursive;
 }
 
 .button-grid {

@@ -83,19 +83,25 @@ footer p {
   margin-bottom: 10px;
 }
 
-/* Estilo para o container dos ícones sociais */
 .social-icons {
-  display: flex;
-  justify-content: center;
+  display: flex;               /* Mantém o texto e a imagem em linha */
+  justify-content: center;     /* Centraliza o conteúdo horizontalmente */
+  align-items: center;         /* Alinha o texto e a imagem verticalmente */
+  margin-bottom: -350px;         /* Espaço de 2px acima do footer */
+  z-index: 3;                 /* Garante que a div esteja acima da imagem de fundo */
 }
 
-/* Estilo para os ícones sociais */
-.social-icons a {
-  margin: 0 10px;
+.social-icons p {
+  margin: 0;                  /* Remove margens do parágrafo */
+  color: white;               /* Cor do texto */
+  font-size: 16px;            /* Tamanho da fonte */
+  text-align: center;         /* Centraliza o texto */
+  white-space: nowrap;        /* Evita que o texto quebre em várias linhas */
 }
 
-/* Estilo para as imagens dos ícones sociais */
+/* Estilo para a imagem do ícone */
 .social-icons img {
-  width: 30px;
-  height: 30px;
+  width: 30px;                /* Largura da imagem */
+  height: 30px;               /* Altura da imagem */
+  margin-left: 5px;           /* Um pequeno espaço à esquerda do ícone */
 }

@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
   detalhesAgendamentoDiv.textContent = `Serviço(s): ${servicosNomes}, Preço total: R$ ${valorTotal.replace('.', ',')}`;
 
   // Lógica para mostrar as datas disponíveis
-  mostrarDatasBtn.addEventListener('click', () => {
+  document.getElementById('mostrarDatasBtn').addEventListener('click', () => {
     const datasDisponiveisContainer = document.getElementById('datasDisponiveis');
     const horariosDisponiveisContainer = document.getElementById('horariosDisponiveis');
 
@@ -59,8 +59,24 @@ document.addEventListener('DOMContentLoaded', function () {
     horariosDisponiveisContainer.style.display = 'block'; // Mostra os horários disponíveis
   }
 
+  // Função para enviar mensagem ao WhatsApp
+  function enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado) {
+    const numeroWhatsApp = '5511912144127'; // Sem espaços ou símbolos
+    const mensagem = `Olá! Um novo agendamento foi realizado:%0A
+Nome: ${nome}%0A
+Telefone: ${telefone}%0A
+Serviços: ${servicosNomes}%0A
+Preço Total: R$ ${valorTotal}%0A
+Data: ${dataSelecionada}%0A
+Horário: ${horarioSelecionado}`;
+
+    // Link para abrir o WhatsApp com a mensagem formatada
+    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+    window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+  }
+
   // Lógica de confirmação do agendamento
-  confirmarBtn.addEventListener('click', () => {
+  document.getElementById('confirmarBtn').addEventListener('click', () => {
     const nome = nomeInput.value;
     const telefone = telefoneInput.value;
 
@@ -75,6 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const confirmacao = confirm(mensagemConfirmacao);
     if (confirmacao) {
       alert(`Agendamento confirmado para ${dataSelecionada} com horário ${horarioSelecionado}.\nNome: ${nome}\nTelefone: ${telefone}`);
+
+      // Enviar mensagem para o WhatsApp
+      enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado);
     } else {
       alert('Agendamento cancelado. Você pode corrigir as informações.');
     }
@@ -84,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function () {
   criarCalendario();
 });
 
+// Função para obter datas disponíveis
 function getDatasDisponiveis() {
   const datas = [];
   const hoje = new Date();
