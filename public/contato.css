@@ -1,41 +1,56 @@
+/* Reset geral */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* Corpo e Fonte */
 body, html {
   height: 100%;
-  font-family: 'Poppins', sans-serif; /* Fonte mais moderna */
+  font-family: 'Poppins', sans-serif; /* Fonte moderna */
 }
 
-/* Container principal */
+/* Container Principal */
 .App {
   display: flex;
   flex-direction: column;
   align-items: center; /* Centraliza horizontalmente */
   justify-content: center; /* Centraliza verticalmente */
-  min-height: 100vh; /* Garante que ocupe 100% da altura da tela */
+  text-align: center; /* Garante que o texto seja centralizado */
+  min-height: 100vh; /* Ocupa 100% da altura da tela */
   background-image: url('assets/borboletas-azuis-estampadas-em-vetor-de-fundo-preto_53876-140303.jpg');
   background-size: cover;
   background-position: center;
-  padding: 20px; /* Espaçamento interno */
+  padding: 20px; /* Espaço interno */
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  gap: 20px; /* Espaço entre os blocos principais */
+}
+
+/* Contêiner para Título */
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  width: 100%; /* Garante que ocupe toda a largura */
+  margin-bottom: 50px; /* Espaço entre o título e outros elementos */
 }
 
 /* Título Moderno */
 h1 {
-  margin-bottom: 20px;
-  text-align: center;
-  font-size: 2rem; /* Tamanho responsivo do título */
-  background: linear-gradient(to right, #6a11cb, #2575fc); /* Gradiente moderno */
+  font-size: 2rem; /* Tamanho responsivo */
+  background: linear-gradient(to right, #8bcf0c, #2575fc); /* Gradiente */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: fadeIn 1.5s ease-in-out; /* Animação suave */
+  animation: fadeIn 1.5s ease-in-out; /* Animação */
+  margin-top: 10px; /* Aproxima do topo */
+  margin-bottom: 20px; /* Espaço inferior */
+  text-align: center;
 }
 
-/* Animação suave para o título */
+/* Animação suave */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -45,26 +60,31 @@ h1 {
   }
 }
 
-/* Rótulos */
 label {
-  display: block;
-  margin-bottom: 5px;
-  width: 80%; /* Mesma largura que os inputs e botões */
-  text-align: left; /* Alinha o texto à esquerda */
+  display: block; 
+  margin-bottom: 5px; 
+  width: 80%; 
+  text-align: left; 
+  font-size: 16px; 
+  font-weight: bold; 
+  color: #ffffff; 
+  
+ 
+margin-left: 80px; /* Ajuste esse valor conforme necessário */
 }
 
 /* Inputs */
 .input-padrao {
-  width: 60%;
+  width: 60%; /* Largura consistente */
   max-width: 400px; /* Limite para telas maiores */
   padding: 10px;
   margin-bottom: 15px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 14px; /* Aumentado para melhor legibilidade */
+  font-size: 14px; /* Melhor legibilidade */
 }
 
-/* Botões padrão */
+/* Botões Padrão */
 .btn-padrao {
   width: 60%; /* Largura igual aos inputs */
   max-width: 400px; /* Limite para telas maiores */
@@ -76,7 +96,7 @@ label {
   border-radius: 5px;
   cursor: pointer;
   font-size: 14px;
-  transition: background-color 0.3s; /* Efeito de transição */
+  transition: background-color 0.3s;
 }
 
 .btn-padrao:hover {
@@ -87,15 +107,15 @@ label {
 .data-button,
 .horario-button {
   width: 60%; /* Largura consistente */
-  max-width: 400px; /* Limite para telas maiores */
+  max-width: 400px;
   padding: 5px;
-  margin: 5px 0; /* Margem superior e inferior */
+  margin: 5px 0;
   font-size: 12px;
   cursor: pointer;
   border-radius: 5px;
   background-color: #28a745;
   color: white;
-  transition: background-color 0.3s; /* Efeito de transição */
+  transition: background-color 0.3s;
 }
 
 .data-button:hover,
@@ -106,8 +126,18 @@ label {
 /* Mensagem de detalhes */
 #detalhesAgendamento {
   margin-top: 20px;
-  width: 80%; /* Largura consistente com os outros elementos */
+  width: 80%; /* Largura consistente */
   text-align: center;
+}
+
+/* Contêiner para os botões */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centraliza horizontalmente */
+  justify-content: center; /* Centraliza verticalmente */
+  width: 90%; /* Largura total */
+  gap: 15px; /* Espaço entre os botões */
 }
 
 /* Responsividade */

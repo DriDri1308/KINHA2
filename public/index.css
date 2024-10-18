@@ -2,116 +2,100 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
 
 body, html {
   height: 100%;
+  font-family: Arial, sans-serif;
   display: flex;
-  flex-direction: column; /* Mantém a estrutura vertical */
-  justify-content: flex-end; /* Posiciona os botões na parte inferior */
-  overflow: hidden;
-  background-color: black;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Impede que a imagem de fundo se estenda além dos limites do viewport */
+  background-color: black; /* Fundo preto cobrindo toda a tela */
 }
-
 .background-image {
   position: fixed;
-  top: -20%; /* Ajusta a imagem de fundo para cima */
-  left: 0;
-  width: 100%;
-  height: 120%; /* Aumenta a altura para cobrir a parte inferior */
+  top: 0;
+  left: 6; /* Ajustado para 0 para começar do canto esquerdo */
+  width: 50%;
+  height: 50%;
   background-image: url('assets/WhatsApp Image 2024-06-16 at 20.18.19.jpeg');
-  background-size: cover;
+  background-size: cover; /* Alterado para cover para cobrir todo o elemento */
   background-position: center;
   background-repeat: no-repeat;
   z-index: 1;
 }
 
+
 .App {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   z-index: 2;
-  margin-bottom: 10px; /* Diminui o espaçamento entre os botões e o rodapé */
 }
 
 .button-container {
-  display: flex; /* Flexbox para alinhar os botões lado a lado */
-  justify-content: center; /* Centraliza os botões horizontalmente */
-  margin: 10px 0; /* Diminui a margem para aproximar os botões do rodapé */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  text-align: center;
+  color: white;
   z-index: 3;
 }
 
-#btnAgendamento, #btnCancelamento {
-  padding: 15px 20px; /* Ajusta o padding para o botão */
-  font-size: 16px; /* Tamanho fixo da fonte */
+#btnAgendamento {
+  padding: 15px 80px;
+  font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
   background-color: #007bff;
   color: white;
   transition: background-color 0.3s, color 0.3s;
-  width: 160px; /* Define uma largura fixa para ambos os botões */
-  margin: 0 10px; /* Espaçamento horizontal entre os botões */
+  z-index: 4;
 }
 
-#btnAgendamento:hover, #btnCancelamento:hover {
+#btnAgendamento:hover {
   background-color: rgba(0, 123, 255, 0.8);
 }
-
 footer {
   background-color: rgb(12, 10, 10);
   color: white;
   text-align: center;
-  padding: 10px 0; /* Ajustado para diminuir a altura do rodapé */
+  padding: 2px 0;
+  position: fixed;
+  bottom: 0;
   width: 100%;
-  z-index: 4;
+  z-index: 1; /* Coloca o rodapé abaixo de todos os outros elementos */
 }
 
+/* Estilo para o parágrafo do rodapé */
+footer p {
+  margin-bottom: 10px;
+}
+
+/* Estilo para o container dos ícones sociais */
 .social-icons {
   display: flex;
   justify-content: center;
-  align-items: center;
-  margin-top: 10px; /* Ajustado para 10px de margem no topo dos ícones */
 }
 
+/* Estilo para os ícones sociais */
 .social-icons a {
-  margin: 0 10px; /* Ajustado para 10px de margem horizontal entre os ícones */
+  margin: 0 10px;
 }
 
+/* Estilo para as imagens dos ícones sociais */
 .social-icons img {
-  width: 30px; /* Tamanho fixo dos ícones */
-  height: auto; /* Altura automática para manter a proporção */
-}
-
-/* Estilos responsivos */
-@media (max-width: 768px) { /* Para dispositivos móveis */
-  #btnAgendamento, #btnCancelamento {
-    width: 120px; /* Ajuste a largura dos botões para caber em telas menores */
-    font-size: 14px; /* Reduz o tamanho da fonte para melhor legibilidade */
-  }
-
-  .background-image {
-    height: 130%; /* Aumenta a altura para cobrir a parte inferior em telas menores */
-  }
-
-  footer {
-    padding: 8px 0; /* Diminui o padding do rodapé em dispositivos móveis */
-  }
-}
-
-@media (min-width: 769px) { /* Para telas maiores, como tablets e desktops */
-  #btnAgendamento, #btnCancelamento {
-    width: 180px; /* Largura maior para botões em telas grandes */
-    font-size: 18px; /* Tamanho da fonte maior para melhor legibilidade */
-  }
-
-  .background-image {
-    height: 100%; /* Ajuste a altura da imagem para telas grandes */
-  }
-
-  footer {
-    padding: 12px 0; /* Aumenta o padding do rodapé em telas grandes */
-  }
+  width: 30px;
+  height: 30px;
 }

@@ -1,24 +1,32 @@
 const path = require('path');
 
 module.exports = {
-  mode: 'development', // Adicione esta linha para definir o modo
-  entry: './index.js', // Caminho para o seu arquivo de entrada
+  entry: './src/index.js', // Arquivo de entrada
   output: {
-    filename: 'bundle.js', // Nome do arquivo gerado
-    path: path.resolve(__dirname, 'dist'), // Caminho de saída
+    path: path.resolve(__dirname, 'dist'), // Diretório de saída
+    filename: 'bundle.js', // Nome do arquivo de saída
   },
+  mode: 'development', // Modo de desenvolvimento ou produção
   module: {
     rules: [
       {
-        test: /\.js$/, // Aplica o loader a arquivos .js
-        exclude: /node_modules/, // Exclui a pasta node_modules
+        test: /\.css$/, // Regras para arquivos CSS
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif|svg)$/, // Regras para imagens
+        type: 'asset/resource',
+      },
+      {
+        test: /\.jsx?$/, // Regras para arquivos JS e JSX
+        exclude: /node_modules/,
         use: {
-          loader: 'babel-loader', // Usar o babel-loader
+          loader: 'babel-loader',
         },
       },
     ],
   },
   resolve: {
-    extensions: ['.js'], // Extensões a serem resolvidas
+    extensions: ['.js', '.jsx'], // Extensões reconhecidas
   },
 };
