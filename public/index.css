@@ -13,10 +13,11 @@ body, html {
   overflow: hidden; /* Impede que a imagem de fundo se estenda além dos limites do viewport */
   background-color: black; /* Fundo preto cobrindo toda a tela */
 }
+
 .background-image {
   position: fixed;
   top: 0;
-  left: 6; /* Ajustado para 0 para começar do canto esquerdo */
+  left: 100; /* Ajustado para 0 para começar do canto esquerdo */
   width: 50%;
   height: 50%;
   background-image: url('assets/WhatsApp Image 2024-06-16 at 20.18.19.jpeg');
@@ -25,7 +26,6 @@ body, html {
   background-repeat: no-repeat;
   z-index: 1;
 }
-
 
 .App {
   width: 100%;
@@ -39,7 +39,7 @@ body, html {
 
 .button-container {
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -67,6 +67,7 @@ body, html {
 #btnAgendamento:hover {
   background-color: rgba(0, 123, 255, 0.8);
 }
+
 footer {
   background-color: rgb(12, 10, 10);
   color: white;
@@ -84,24 +85,47 @@ footer p {
 }
 
 .social-icons {
-  display: flex;               /* Mantém o texto e a imagem em linha */
-  justify-content: center;     /* Centraliza o conteúdo horizontalmente */
-  align-items: center;         /* Alinha o texto e a imagem verticalmente */
-  margin-bottom: -350px;         /* Espaço de 2px acima do footer */
-  z-index: 3;                 /* Garante que a div esteja acima da imagem de fundo */
+  display: flex;              /* Mantém o texto e a imagem em linha */
+  justify-content: center;    /* Centraliza o conteúdo horizontalmente */
+  align-items: center;        /* Alinha o texto e a imagem verticalmente */
+  margin: 20px 0;            /* Adiciona espaço acima e abaixo para separar do botão */
+  z-index: 3;                /* Garante que a div esteja acima da imagem de fundo */
+  text-align: center;         /* Centraliza o texto dentro da div */
+  width: 100%;                /* Garante que a div ocupe toda a largura disponível */
+  position: absolute;         /* Para que possamos posicioná-lo abaixo do botão */
+  top: calc(70% + 40px);     /* Ajusta a posição vertical para ficar abaixo do botão */
 }
 
+
 .social-icons p {
-  margin: 0;                  /* Remove margens do parágrafo */
-  color: white;               /* Cor do texto */
-  font-size: 16px;            /* Tamanho da fonte */
-  text-align: center;         /* Centraliza o texto */
-  white-space: nowrap;        /* Evita que o texto quebre em várias linhas */
+  margin: 0;                 /* Remove margens do parágrafo */
+  color: white;              /* Cor do texto */
+  font-size: 16px;           /* Tamanho da fonte */
+  white-space: nowrap;       /* Evita que o texto quebre em várias linhas */
 }
 
 /* Estilo para a imagem do ícone */
 .social-icons img {
-  width: 30px;                /* Largura da imagem */
-  height: 30px;               /* Altura da imagem */
-  margin-left: 5px;           /* Um pequeno espaço à esquerda do ícone */
+  width: 30px;               /* Largura da imagem */
+  height: 30px;              /* Altura da imagem */
+  margin-left: 5px;          /* Um pequeno espaço à esquerda do ícone */
+}
+
+#adminBtn {
+  padding: 10px 20px;         /* Ajuste o padding conforme necessário */
+  font-size: 10px;            /* Tamanho da fonte */
+  cursor: pointer;            /* Cursor em forma de mão ao passar o mouse */
+  border: none;               /* Sem borda */
+  border-radius: 20px;       /* Bordas arredondadas */
+  background-color: #007bff; /* Cor de fundo do botão */
+  color: white;               /* Cor do texto do botão */
+  transition: background-color 0.3s, color 0.3s; /* Efeito de transição */
+  position: absolute;         /* Para posicionar o botão */
+  bottom: 1px;                /* Um pixel acima do rodapé */
+  right: 10px;                /* Para ficar no canto direito */
+}
+
+
+#adminBtn:hover {
+  background-color: rgba(0, 123, 255, 0.8); /* Efeito de hover */
 }

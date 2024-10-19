@@ -7,16 +7,15 @@ const servicos = [
   { id: 6, title: 'Spa nos Pés', price: 80.00 }
 ];
 
-// Redirecionamento ao clicar no botão de Agendamento
 const btnAgendamento = document.getElementById('btnAgendamento');
 
+// Redireciona para a página de serviços
 if (btnAgendamento) {
   btnAgendamento.addEventListener('click', () => {
-    window.location.href = 'servicos.html'; // Redireciona para a página de serviços
+    window.location.href = 'servicos.html';
   });
 }
 
-// Variável para armazenar os serviços selecionados e seus preços
 let servicosSelecionados = [];
 let valorTotal = 0;
 
@@ -32,19 +31,15 @@ function criarBotoesDeServico() {
     buttonContainer.appendChild(button);
 
     button.addEventListener('click', () => {
-      // Alterna a classe 'selecionado' ao clicar
+      // Alterna a classe 'selecionado'
       button.classList.toggle('selecionado');
 
       // Adiciona ou remove o serviço da lista de selecionados
       const index = servicosSelecionados.findIndex(s => s.id === servico.id);
       if (button.classList.contains('selecionado')) {
-        if (index === -1) {
-          servicosSelecionados.push(servico);
-        }
+        if (index === -1) servicosSelecionados.push(servico);
       } else {
-        if (index !== -1) {
-          servicosSelecionados.splice(index, 1);
-        }
+        if (index !== -1) servicosSelecionados.splice(index, 1);
       }
 
       // Atualiza o valor total
@@ -54,19 +49,18 @@ function criarBotoesDeServico() {
       const servicosSelecionadosCount = document.querySelectorAll('.servico-button.selecionado');
       if (servicosSelecionadosCount.length > 3) {
         alert('Você só pode selecionar até três serviços.');
-        button.classList.remove('selecionado'); // Remove a seleção do botão que excedeu o limite
+        button.classList.remove('selecionado');
         servicosSelecionados.pop(); // Remove o último serviço adicionado
-        valorTotal = servicosSelecionados.reduce((total, servico) => total + servico.price, 0); // Atualiza o valor total
+        valorTotal = servicosSelecionados.reduce((total, servico) => total + servico.price, 0);
       }
     });
   });
 }
 
-// Chamada para criar os botões de serviço ao carregar a página
+// Executa ao carregar a página
 window.onload = function() {
   criarBotoesDeServico();
 
-  // Lógica para confirmar os serviços selecionados
   const btnConfirmar = document.getElementById('btnConfirmar');
   if (btnConfirmar) {
     btnConfirmar.addEventListener('click', () => {
@@ -78,9 +72,9 @@ window.onload = function() {
 
       // Armazena os dados no localStorage
       localStorage.setItem('servicosSelecionados', JSON.stringify(servicosSelecionados));
-      localStorage.setItem('valorTotal', valorTotal.toFixed(2)); // Armazena o valor total como string
+      localStorage.setItem('valorTotal', valorTotal.toFixed(2));
 
-      // Redirecionamento para a página de contato
+      // Redireciona para a página de contato
       window.location.href = 'contato.html';
     });
   }

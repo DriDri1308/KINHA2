@@ -98,9 +98,18 @@ Horário: ${horarioSelecionado}`;
     }
   });
 
+  // Função para cancelar todos os agendamentos
+  document.getElementById('cancelarTodosBtn').addEventListener('click', () => {
+    if (confirm('Tem certeza que deseja cancelar todos os agendamentos?')) {
+      localStorage.removeItem('reservas');
+      alert('Todos os agendamentos foram cancelados.');
+    }
+  });
+
   criarCalendario();
 });
 
+// Função para obter datas disponíveis
 function getDatasDisponiveis() {
   const datas = [];
   const hoje = new Date();
