@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   const servicosSelecionados = JSON.parse(localStorage.getItem('servicosSelecionados')) || [];
-  const valorTotal = localStorage.getItem('valorTotal') || '0.00'; // Valor total padrão
+  const valorTotal = localStorage.getItem('valorTotal') || '0.00';
 
   const nomeInput = document.getElementById('nome');
   const telefoneInput = document.getElementById('telefone');
@@ -9,73 +9,68 @@ document.addEventListener('DOMContentLoaded', function () {
   let horarioSelecionado = '';
   let dataSelecionada = '';
 
-  // Exibe os detalhes do agendamento
   const servicosNomes = servicosSelecionados.map(s => s.title).join(', ');
   detalhesAgendamentoDiv.textContent = `Serviço(s): ${servicosNomes}, Preço total: R$ ${valorTotal.replace('.', ',')}`;
 
-  // Lógica para mostrar as datas disponíveis
   document.getElementById('mostrarDatasBtn').addEventListener('click', () => {
     const datasDisponiveisContainer = document.getElementById('datasDisponiveis');
-    const horariosDisponiveisContainer = document.getElementById('horariosDisponiveis');
+    datasDisponiveisContainer.innerHTML = '';
 
-    // Exibe datas como botões
-    const datas = getDatasDisponiveis(); // Função para obter as datas disponíveis
-    datasDisponiveisContainer.innerHTML = ''; // Limpa as datas anteriores
-
-    datas.forEach(data => {
+    getDatasDisponiveis().forEach(data => {
       const button = document.createElement('button');
       button.className = 'data-button';
       button.textContent = data;
       button.onclick = () => {
-        dataSelecionada = data; // Armazena a data selecionada
-        datasDisponiveisContainer.style.display = 'none'; // Oculta as datas disponíveis
-        mostrarHorariosDisponiveis(); // Chama função para mostrar horários
+        dataSelecionada = data;
+        datasDisponiveisContainer.style.display = 'none';
+        mostrarHorariosDisponiveis();
       };
       datasDisponiveisContainer.appendChild(button);
     });
 
-    datasDisponiveisContainer.style.display = 'block'; // Mostra as datas disponíveis
+    datasDisponiveisContainer.style.display = 'block';
   });
 
-  // Função para mostrar horários disponíveis
   function mostrarHorariosDisponiveis() {
     const horariosDisponiveisContainer = document.getElementById('horariosDisponiveis');
-    horariosDisponiveisContainer.innerHTML = ''; // Limpa horários anteriores
+    horariosDisponiveisContainer.innerHTML = '';
 
-    for (let i = 8; i <= 18; i++) { // Horários de 8h às 18h
-      const button = document.createElement('button');
-      button.className = 'horario-button';
-      button.textContent = `${i}:00`;
-      button.onclick = () => {
-        horarioSelecionado = `${i}:00`; // Armazena o horário selecionado
-        horariosDisponiveisContainer.style.display = 'none'; // Oculta horários disponíveis
+    const horariosReservados = JSON.parse(localStorage.getItem('reservas')) || {};
 
-        // Atualiza a mensagem de detalhes do agendamento
-        detalhesAgendamentoDiv.textContent += `\nData: ${dataSelecionada}\nHorário: ${horarioSelecionado}`;
-      };
-      horariosDisponiveisContainer.appendChild(button);
+    for (let i = 8; i <= 18; i++) {
+      const horario = `${i}:00`;
+      const jaReservado = horariosReservados[dataSelecionada]?.includes(horario);
+
+      if (!jaReservado) {
+        const button = document.createElement('button');
+        button.className = 'horario-button';
+        button.textContent = horario;
+        button.onclick = () => {
+          horarioSelecionado = horario;
+          horariosDisponiveisContainer.style.display = 'none';
+          detalhesAgendamentoDiv.textContent += `\nData: ${dataSelecionada}\nHorário: ${horarioSelecionado}`;
+        };
+        horariosDisponiveisContainer.appendChild(button);
+      }
     }
 
-    horariosDisponiveisContainer.style.display = 'block'; // Mostra os horários disponíveis
+    horariosDisponiveisContainer.style.display = 'block';
   }
 
-  // Função para enviar mensagem ao WhatsApp
   function enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado) {
-    const numeroWhatsApp = '5511912144127'; // Sem espaços ou símbolos
-    const mensagem = `Olá! Um novo agendamento foi realizado:%0A
-Nome: ${nome}%0A
-Telefone: ${telefone}%0A
-Serviços: ${servicosNomes}%0A
-Preço Total: R$ ${valorTotal}%0A
-Data: ${dataSelecionada}%0A
+    const numeroWhatsApp = '5511912144127';
+    const mensagem = `Olá! Um novo agendamento foi realizado.\n
+Nome: ${nome}\n
+Telefone: ${telefone}\n
+Serviço(s): ${servicosNomes}\n
+Preço Total: R$ ${valorTotal.replace('.', ',')}\n
+Data: ${dataSelecionada}\n
 Horário: ${horarioSelecionado}`;
 
-    // Link para abrir o WhatsApp com a mensagem formatada
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
-    window.open(url, '_blank'); // Abre o WhatsApp em uma nova aba
+    window.open(url, '_blank');
   }
 
-  // Lógica de confirmação do agendamento
   document.getElementById('confirmarBtn').addEventListener('click', () => {
     const nome = nomeInput.value;
     const telefone = telefoneInput.value;
@@ -85,32 +80,34 @@ Horário: ${horarioSelecionado}`;
       return;
     }
 
-    // Mensagem de confirmação
     const mensagemConfirmacao = `Você selecionou:\nServiço(s): ${servicosNomes}\nPreço total: R$ ${valorTotal.replace('.', ',')}\nData: ${dataSelecionada}\nHorário: ${horarioSelecionado}\n\nDeseja confirmar o agendamento?`;
 
-    const confirmacao = confirm(mensagemConfirmacao);
-    if (confirmacao) {
-      alert(`Agendamento confirmado para ${dataSelecionada} com horário ${horarioSelecionado}.\nNome: ${nome}\nTelefone: ${telefone}`);
+    if (confirm(mensagemConfirmacao)) {
+      alert(`Agendamento confirmado para ${dataSelecionada} às ${horarioSelecionado}.\nNome: ${nome}\nTelefone: ${telefone}`);
 
-      // Enviar mensagem para o WhatsApp
+      const horariosReservados = JSON.parse(localStorage.getItem('reservas')) || {};
+      if (!horariosReservados[dataSelecionada]) {
+        horariosReservados[dataSelecionada] = [];
+      }
+      horariosReservados[dataSelecionada].push(horarioSelecionado);
+      localStorage.setItem('reservas', JSON.stringify(horariosReservados));
+
       enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado);
     } else {
       alert('Agendamento cancelado. Você pode corrigir as informações.');
     }
   });
 
-  // Inicializa o calendário e as funcionalidades de data
   criarCalendario();
 });
 
-// Função para obter datas disponíveis
 function getDatasDisponiveis() {
   const datas = [];
   const hoje = new Date();
-  for (let i = 0; i < 30; i++) { // Pronto para o próximo mês
+  for (let i = 0; i < 30; i++) {
     const data = new Date(hoje);
     data.setDate(hoje.getDate() + i);
-    datas.push(data.toLocaleDateString('pt-BR')); // Formata a data
+    datas.push(data.toLocaleDateString('pt-BR'));
   }
   return datas;
 }

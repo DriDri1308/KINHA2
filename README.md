@@ -21,10 +21,10 @@ No **Érica Silva - Nails Designer**, acreditamos que cada detalhe conta. Nossa 
 Aqui estão alguns dos serviços que oferecemos:
 
 | ID | Título                    | Preço  |
-|----|--------------------------|--------|
-| 1  | Manicure e Pedicure      | R$ 60,00 |
+
+| 1  | Manicure e Pedicure      | R$ 60,00  |
 | 2  | Fibra de Vidro           | R$ 150,00 |
-| 3  | Gel na Dicas             | R$ 120,00 |
+| 3  | Gel na Tips              | R$ 120,00 |
 | 4  | Banho de Gel             | R$ 85,00  |
 | 5  | Postiça Realista         | R$ 70,00  |
 | 6  | Spa nos Pés              | R$ 80,00  |
@@ -44,7 +44,7 @@ Para agendar um horário, acesse nosso site e preencha o formulário com seus da
 Para mais informações, dúvidas ou sugestões, entre em contato conosco:
 
 - **Email:** contato@ericasilva.com
-- **Telefone:** (11) 077530171
+- **Telefone:** (11) 91214-4127
 - **Endereço:** Rua: Passagem Pedro de Ataíde 25, Vila Nogueira, Diadema, SP
 
 Instagram
