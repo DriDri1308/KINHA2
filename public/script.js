@@ -16,10 +16,51 @@ if (btnAgendamento) {
   });
 }
 
+// Função para gerenciar o botão Admin
+const adminBtn = document.getElementById('adminBtn');
+if (adminBtn) {
+  adminBtn.addEventListener('click', () => {
+    alert('Apenas Érica tem acesso a esta função.');
+    
+    const senha = prompt('Digite a senha:');
+    if (senha === '104211') {
+      // Exibir os agendamentos e permitir a exclusão
+      mostrarAgendamentos();
+    } else {
+      alert('Senha incorreta!');
+    }
+  });
+}
+
+// Função para mostrar agendamentos e permitir a exclusão
+function mostrarAgendamentos() {
+  const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+  
+  if (agendamentos.length === 0) {
+    alert('Não há agendamentos para mostrar.');
+    return;
+  }
+  
+  let mensagem = 'Agendamentos:\n';
+  agendamentos.forEach((agendamento, index) => {
+    mensagem += `${index + 1}: ${agendamento.data} - ${agendamento.horario}\n`;
+  });
+
+  const indexParaExcluir = prompt(`${mensagem}\nDigite o número do agendamento que deseja excluir:`) - 1;
+
+  if (indexParaExcluir >= 0 && indexParaExcluir < agendamentos.length) {
+    agendamentos.splice(indexParaExcluir, 1); // Remove o agendamento
+    localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+    alert('Agendamento excluído com sucesso!');
+  } else {
+    alert('Número inválido!');
+  }
+}
+
+// Função para criar os botões de serviço
 let servicosSelecionados = [];
 let valorTotal = 0;
 
-// Função para criar os botões de serviço
 function criarBotoesDeServico() {
   const buttonContainer = document.querySelector('.button-container .button-grid');
 
@@ -71,6 +112,14 @@ window.onload = function() {
       }
 
       // Armazena os dados no localStorage
+      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+      const data = new Date().toLocaleDateString();
+      const horario = '10:00'; // Você pode substituir isso pelo horário selecionado
+
+      // Armazena o agendamento
+      agendamentos.push({ data, horario });
+      localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
       localStorage.setItem('servicosSelecionados', JSON.stringify(servicosSelecionados));
       localStorage.setItem('valorTotal', valorTotal.toFixed(2));
 
