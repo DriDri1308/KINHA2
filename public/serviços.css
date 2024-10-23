@@ -1,103 +1,91 @@
+/* Reset básico */
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;    
   font-family: Arial, sans-serif;
 }
 
 body, html {
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.App {
   width: 100%;
-  height: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
-.background-image {
+.full-screen-background {
   position: fixed;
-  top: 0;
-  left: 10; /* Mantenha à esquerda */
-  width: 110%;
-  height: 130%;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  z-index: -1;
+  top: 50%; /* Centraliza verticalmente */
+  left: 50%; /* Centraliza horizontalmente */
+  transform: translate(-50%, -50%); /* Move para o centro exato */
+  width: calc(100vw + 10px); /* Aumenta a largura em 10px */
+  height: calc(100vh + 10px); /* Aumenta a altura em 10px */
+  background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
+  background-size: cover; /* Cobre a tela inteira */
+  z-index: 0; /* Fica atrás de tudo */
 }
 
-.button-container {
+/* Imagem de background sobre a principal */
+.background-image {
   position: absolute;
-  top: 50%;
-  left: 50; /* Ajuste para começar da margem esquerda */
-  transform: translateY(-50%);
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
+  background-size: contain; /* Mantém a proporção da imagem sem cortes */
+  z-index: 1; /* Fica sobre a imagem principal, mas atrás dos botões */
+}
+
+/* Container dos botões */
+.button-container {
+  position: relative;
+  z-index: 2; /* Sobrepõe a imagem de fundo */
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 10px;
-  text-align: left;
-  color: white;
-}
-
-/* Fonte do título alterada para Script */
-.button-container h1 {
-  margin-bottom: 20px;
-  font-family: 'Script', cursive;
-}
-
-.button-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  align-items: center;
   gap: 10px;
 }
 
+/* Cada serviço com botão e imagem */
+.servico-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Estilo dos botões */
 .servico-button {
-  padding: 15px 30px;
+  flex: 1;
+  padding: 10px 15px;
   font-size: 15px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #cd7db9;
+  color: rgb(20, 14, 14);
   transition: background-color 0.3s, color 0.3s;
-  width: 100%;
-  max-width: 200px;
-  position: relative;
+  text-align: left;
 }
 
 .servico-button:hover {
-  background-color: rgba(0, 123, 255, 0.8);
+  background-color: #b96fa4;
 }
 
-.servico-button.selecionado {
-  background-color: #28a745;
+/* Estilo das imagens */
+.servico-img {
+  width: 70px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 3px; /* Adiciona margem em torno da imagem */
 }
 
-.servico-button .info {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background-color: white;
-  color: black;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.servico-button.selecionado:hover .info {
-  display: block;
-}
-
+/* Botão de confirmação */
 #btnConfirmar {
   margin-top: 20px;
   padding: 15px 30px;
@@ -105,8 +93,8 @@ body, html {
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #c95498;
+  color: rgb(29, 19, 19);
   transition: background-color 0.3s, color 0.3s;
   width: 100%;
   max-width: 200px;
@@ -115,3 +103,22 @@ body, html {
 #btnConfirmar:hover {
   background-color: rgba(0, 123, 255, 0.8);
 }
+
+/* Ajustes para garantir que tudo se mantenha igual em telas menores */
+@media (max-width: 768px) {
+  .full-screen-background {
+    width: 100vw; /* Largura total em dispositivos menores */
+    height: 100vh; /* Altura total em dispositivos menores */
+  }
+  
+  .servico-button {
+    padding: 8px 12px; /* Diminui o padding dos botões para telas menores */
+    font-size: 14px; /* Ajusta o tamanho da fonte dos botões */
+  }
+
+  .servico-img {
+    width: 60px; /* Diminui a largura das imagens dos serviços */
+    height: 40px; /* Diminui a altura das imagens dos serviços */
+  }
+}
+

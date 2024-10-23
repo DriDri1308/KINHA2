@@ -17,13 +17,13 @@ body, html {
 .background-image {
   position: fixed;
   top: 0;
-  left: 100; /* Ajustado para 0 para começar do canto esquerdo */
-  width: 50%;
-  height: 50%;
-  background-image: url('assets/WhatsApp Image 2024-06-16 at 20.18.19.jpeg');
-  background-size: cover; /* Alterado para cover para cobrir todo o elemento */
-  background-position: center;
-  background-repeat: no-repeat;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.06.09_7b84a365.jpg');
+  background-size: contain; /* Garante que a imagem inteira seja exibida */
+  background-position: center; /* Centraliza a imagem */
+  background-repeat: no-repeat; /* Impede a repetição */
   z-index: 1;
 }
 
@@ -39,7 +39,7 @@ body, html {
 
 .button-container {
   position: absolute;
-  top: 60%;
+  top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -53,19 +53,19 @@ body, html {
 }
 
 #btnAgendamento {
-  padding: 15px 80px;
+  padding: 10px 80px;
   font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #9e2360;
+  color: rgb(16, 10, 10);
   transition: background-color 0.3s, color 0.3s;
   z-index: 4;
 }
 
 #btnAgendamento:hover {
-  background-color: rgba(0, 123, 255, 0.8);
+  background-color: rgba(168, 53, 160, 0.8);
 }
 
 footer {
@@ -93,13 +93,13 @@ footer p {
   text-align: center;         /* Centraliza o texto dentro da div */
   width: 100%;                /* Garante que a div ocupe toda a largura disponível */
   position: absolute;         /* Para que possamos posicioná-lo abaixo do botão */
-  top: calc(70% + 40px);     /* Ajusta a posição vertical para ficar abaixo do botão */
+  top: calc(30% + 40px);     /* Ajusta a posição vertical para ficar abaixo do botão */
 }
 
 
 .social-icons p {
   margin: 0;                 /* Remove margens do parágrafo */
-  color: white;              /* Cor do texto */
+  color: rgb(18, 9, 9);              /* Cor do texto */
   font-size: 16px;           /* Tamanho da fonte */
   white-space: nowrap;       /* Evita que o texto quebre em várias linhas */
 }
@@ -112,20 +112,20 @@ footer p {
 }
 
 #adminBtn {
-  padding: 10px 20px;         /* Ajuste o padding conforme necessário */
-  font-size: 10px;            /* Tamanho da fonte */
-  cursor: pointer;            /* Cursor em forma de mão ao passar o mouse */
-  border: none;               /* Sem borda */
-  border-radius: 20px;       /* Bordas arredondadas */
-  background-color: #007bff; /* Cor de fundo do botão */
-  color: white;               /* Cor do texto do botão */
-  transition: background-color 0.3s, color 0.3s; /* Efeito de transição */
-  position: absolute;         /* Para posicionar o botão */
-  bottom: 1px;                /* Um pixel acima do rodapé */
-  right: 10px;                /* Para ficar no canto direito */
+  padding: 10px 20px;
+  font-size: 10px;
+  cursor: pointer;
+  background-color: transparent; /* Remove fundo visível */
+  color: rgb(12, 9, 9);
+  border: none; /* Remove a borda */
+  transition: color 0.3s;
+  position: absolute; /* Mantém o posicionamento */
+  bottom: -250px; /* 1px sobre a linha do footer */
+  right: 480px; /* Alinha à direita */
 }
 
 
+
 #adminBtn:hover {
-  background-color: rgba(0, 123, 255, 0.8); /* Efeito de hover */
+  background-color: rgba(233, 238, 243, 0.8); /* Efeito de hover */
 }
