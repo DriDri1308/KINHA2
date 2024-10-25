@@ -8,42 +8,39 @@
 /* Corpo e Fonte */
 body, html {
   height: 100%;
-  font-family: 'Poppins', sans-serif; /* Fonte moderna */
+  font-family: 'Poppins', sans-serif;
 }
 
 /* Container Principal */
 .App {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente */
-  justify-content: center; /* Centraliza verticalmente */
-  text-align: center; /* Garante que o texto seja centralizado */
-  min-height: 100vh; /* Ocupa 100% da altura da tela */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  height: 100vh; /* Usa 100% da altura da tela */
   background-image: url('assets/manicure-ferramentas-para-criar-polidores-de-gel-tudo-para-o-tratamento-de-unhas-o-conceito-de-beleza-cuidado-banner-de-salao-fundo-rosa-700-142961653.jpg');
-  background-size: cover; /* Faz a imagem cobrir toda a área */
+  background-size: cover; /* Faz com que a imagem cubra toda a tela */
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Não repete a imagem */
-  padding: 80px; /* Espaço interno */
   color: white;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
-  gap: 20px; /* Espaço entre os blocos principais */
 }
 
 /* Estilos para telas menores */
 @media (max-width: 768px) {
   .App {
-    padding: 40px; /* Reduz o espaço interno */
     gap: 10px; /* Ajusta o espaço entre os botões */
   }
 
   /* Estilos específicos para botões */
-  .btn-padrao {
+  .servico-button {
     width: 100%; /* Botões ocupam 100% da largura */
     max-width: 300px; /* Limita a largura máxima dos botões */
     margin: 10px 0; /* Margem entre os botões */
   }
 }
-
 
 /* Contêiner para Título */
 .title-container {
@@ -65,6 +62,7 @@ h1 {
   margin-top: 10px; /* Aproxima do topo */
   margin-bottom: 20px; /* Espaço inferior */
   text-align: center;
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
 }
 
 /* Animação suave */
@@ -97,45 +95,47 @@ label {
   border: 1px solid #68033c;
   border-radius: 5px;
   font-size: 14px; /* Melhor legibilidade */
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
 }
 
 /* Botões Padrão */
-.btn-padrao {
-  width: 60%; /* Largura igual aos inputs */
-  max-width: 400px; /* Limite para telas maiores */
-  padding: 10px;
-  margin-top: 10px;
-  border: none;
-  background-color: #c9369f;
-  color: rgb(18, 6, 6);
-  border-radius: 5px;
+.servico-button {
+  flex: 1; /* Altera a largura para ocupar igualmente o espaço */
+  padding: 10px 15px; /* Ajusta o padding */
+  font-size: 15px; /* Ajusta o tamanho da fonte */
   cursor: pointer;
-  font-size: 14px;
-  transition: background-color 0.3s;
+  border: none;
+  border-radius: 20px; /* Rounding */
+  background-color: #ff66b2; /* Cor de fundo rosa */
+  color: #000000; /* Cor do texto preto */
+  transition: background-color 0.3s, color 0.3s; /* Efeitos de transição */
+  text-align: left;
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
 }
 
-.btn-padrao:hover {
-  background-color: #218838; /* Efeito ao passar o mouse */
+.servico-button:hover {
+  background-color: #ff3385; /* Cor do botão ao passar o mouse */
 }
 
 /* Botões de Data e Horário */
 .data-button,
 .horario-button {
-  width: 60%; /* Largura consistente */
-  max-width: 400px;
-  padding: 5px;
-  margin: 5px 0;
-  font-size: 12px;
+  flex: 1; /* Altera a largura para ocupar igualmente o espaço */
+  padding: 5px 10px; /* Reduz o padding para deixar o botão menor */
+  font-size: 14px; /* Ajusta o tamanho da fonte, se necessário */
   cursor: pointer;
-  border-radius: 5px;
-  background-color: #28a745;
-  color: white;
-  transition: background-color 0.3s;
+  border: none;
+  border-radius: 10px; /* Reduz o arredondamento das bordas */
+  background-color: #ff66b2; /* Cor de fundo rosa */
+  color: #000000; /* Cor do texto preto */
+  transition: background-color 0.3s, color 0.3s; /* Efeitos de transição */
+  text-align: left;
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
 }
 
 .data-button:hover,
 .horario-button:hover {
-  background-color: #218838;
+  background-color: #ff3385; /* Cor do botão ao passar o mouse */
 }
 
 /* Mensagem de detalhes */
@@ -152,13 +152,13 @@ label {
   align-items: center; /* Centraliza horizontalmente */
   justify-content: center; /* Centraliza verticalmente */
   width: 90%; /* Largura total */
-  gap: 15px; /* Espaço entre os botões */
+  gap: 20px; /* Espaço entre os botões */
 }
 
 /* Responsividade */
 @media (max-width: 768px) {
   .input-padrao,
-  .btn-padrao,
+  .servico-button,
   .data-button,
   .horario-button {
     width: 90%; /* Ajusta para telas menores */

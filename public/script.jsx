@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
       button.onclick = () => {
         dataSelecionada = data;
         datasDisponiveisContainer.style.display = 'none';
-        mostrarHorariosDisponiveis();
+        mostrarHorariosDisponiveis(dataSelecionada);
       };
       datasDisponiveisContainer.appendChild(button);
     });
@@ -31,13 +31,19 @@ document.addEventListener('DOMContentLoaded', function () {
     datasDisponiveisContainer.style.display = 'block';
   });
 
-  function mostrarHorariosDisponiveis() {
+  function mostrarHorariosDisponiveis(dataSelecionada) {
     const horariosDisponiveisContainer = document.getElementById('horariosDisponiveis');
     horariosDisponiveisContainer.innerHTML = '';
 
     const horariosReservados = JSON.parse(localStorage.getItem('reservas')) || {};
+    const hoje = new Date();
+    const dataSelecionadaObj = new Date(dataSelecionada);
 
-    for (let i = 8; i <= 18; i++) {
+    // Se a data selecionada for hoje, apenas horários a partir da hora atual estarão disponíveis
+    const inicioHorario = (dataSelecionadaObj.toDateString() === hoje.toDateString()) ? hoje.getHours() : 8;
+    const fimHorario = 18;
+
+    for (let i = inicioHorario; i <= fimHorario; i++) {
       const horario = `${i}:00`;
       const jaReservado = horariosReservados[dataSelecionada]?.includes(horario);
 
@@ -55,6 +61,23 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     horariosDisponiveisContainer.style.display = 'block';
+  }
+
+  function getDatasDisponiveis() {
+    const datas = [];
+    const hoje = new Date();
+    const anoAtual = hoje.getFullYear();
+    const mesAtual = hoje.getMonth();
+
+    // Loop para criar datas do mês atual
+    for (let dia = 1; dia <= 31; dia++) {
+      const data = new Date(anoAtual, mesAtual, dia);
+      // Verifica se a data é válida e se é do mês atual
+      if (data.getMonth() === mesAtual && data >= hoje) {
+        datas.push(data.toLocaleDateString('pt-BR'));
+      }
+    }
+    return datas;
   }
 
   function enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado) {
@@ -85,14 +108,17 @@ Horário: ${horarioSelecionado}`;
     if (confirm(mensagemConfirmacao)) {
       alert(`Agendamento confirmado para ${dataSelecionada} às ${horarioSelecionado}.\nNome: ${nome}\nTelefone: ${telefone}`);
 
-      const horariosReservados = JSON.parse(localStorage.getItem('reservas')) || {};
-      if (!horariosReservados[dataSelecionada]) {
-        horariosReservados[dataSelecionada] = [];
-      }
-      horariosReservados[dataSelecionada].push(horarioSelecionado);
-      localStorage.setItem('reservas', JSON.stringify(horariosReservados));
+      // Alerta sobre a política de cancelamento
+      if (confirm('Cancelamentos somente com 1 dia de antecedência, após esse período será cobrada taxa. Clique em OK para continuar.')) {
+        const horariosReservados = JSON.parse(localStorage.getItem('reservas')) || {};
+        if (!horariosReservados[dataSelecionada]) {
+          horariosReservados[dataSelecionada] = [];
+        }
+        horariosReservados[dataSelecionada].push(horarioSelecionado);
+        localStorage.setItem('reservas', JSON.stringify(horariosReservados));
 
-      enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado);
+        enviarMensagemWhatsApp(nome, telefone, servicosNomes, valorTotal, dataSelecionada, horarioSelecionado);
+      }
     } else {
       alert('Agendamento cancelado. Você pode corrigir as informações.');
     }
@@ -113,10 +139,16 @@ Horário: ${horarioSelecionado}`;
 function getDatasDisponiveis() {
   const datas = [];
   const hoje = new Date();
-  for (let i = 0; i < 30; i++) {
-    const data = new Date(hoje);
-    data.setDate(hoje.getDate() + i);
-    datas.push(data.toLocaleDateString('pt-BR'));
+  const anoAtual = hoje.getFullYear();
+  const mesAtual = hoje.getMonth();
+
+  // Loop para criar datas do mês atual
+  for (let dia = 1; dia <= 31; dia++) {
+    const data = new Date(anoAtual, mesAtual, dia);
+    // Verifica se a data é válida e se é do mês atual
+    if (data.getMonth() === mesAtual && data >= hoje) {
+      datas.push(data.toLocaleDateString('pt-BR'));
+    }
   }
   return datas;
 }

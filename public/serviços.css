@@ -60,20 +60,27 @@ body, html {
 
 /* Estilo dos botões */
 .servico-button {
-  flex: 1;
-  padding: 10px 15px;
+  width: 200px; /* Largura fixa */
+  height: 50px; /* Altura fixa */
+  padding: 10px; /* Padding fixo */
   font-size: 15px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #cd7db9;
-  color: rgb(20, 14, 14);
+  background-color: #ff66b2; /* Cor de fundo rosa */
+  color: #000000; /* Cor do texto preto */
   transition: background-color 0.3s, color 0.3s;
-  text-align: left;
+  text-align: center; /* Centraliza o texto */
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
+}
+
+.servico-button.selecionado { /* Adiciona classe para botão selecionado */
+  background-color: #ff3385; /* Cor do botão selecionado */
+  color: #ffffff; /* Cor do texto do botão selecionado */
 }
 
 .servico-button:hover {
-  background-color: #b96fa4;
+  background-color: #ff3385; /* Cor do botão ao passar o mouse */
 }
 
 /* Estilo das imagens */
@@ -93,15 +100,17 @@ body, html {
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #c95498;
-  color: rgb(29, 19, 19);
+  background-color: #ff66b2; /* Cor igual aos botões de serviço */
+  color: #000000; /* Cor do texto igual aos botões de serviço */
   transition: background-color 0.3s, color 0.3s;
   width: 100%;
   max-width: 200px;
+  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
 }
 
 #btnConfirmar:hover {
-  background-color: rgba(0, 123, 255, 0.8);
+  background-color: #ff3385; /* Cor do botão de confirmação igual ao selecionado */
+  color: #ffffff; /* Cor do texto ao passar o mouse */
 }
 
 /* Ajustes para garantir que tudo se mantenha igual em telas menores */

@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Importando as fontes necessárias -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <title>Agendamento de Serviços</title>
-  <link rel="stylesheet" href="contato.css">
+  <link rel="stylesheet" href="contato.css"> <!-- Link para o CSS separado -->
 </head>
 <body>
   <div class="App">
-    <div class="background-image" style="background-image: url('assets\Imagem colada.png');"></div>
+    <div class="background-image"></div>
     <div class="button-container">
       <h1>Informe seus Dados</h1>
       <form id="formAgendamento" onsubmit="return false;">
@@ -18,13 +20,15 @@
         <label for="telefone">Telefone:</label>
         <input type="tel" id="telefone" name="telefone" class="input-padrao" required>
 
-        <button type="button" id="mostrarDatasBtn" class="btn-padrao">Mostrar Datas Disponíveis</button>
-        <div class="datas-disponiveis" id="datasDisponiveis" style="display: none;"></div>
+        <button type="button" id="mostrarDatasBtn" class="servico-button">Mostrar Datas Disponíveis</button>
+        <div class="datas-disponiveis" id="datasDisponiveis"></div>
 
-        <h2></h2>
-        <div class="horarios-disponiveis" id="horariosDisponiveis" style="display: none;"></div>
+        <button type="button" id="mostrarHorariosBtn" class="servico-button" style="display: none;">Mostrar Horários Disponíveis</button>
+        <div class="horarios-disponiveis" id="horariosDisponiveis" style="display: none;">
+          <div id="horariosContainer" style="display: none;"></div>
+        </div>
 
-        <button type="submit" id="confirmarBtn" class="btn-padrao">Confirmar Agendamento</button>
+        <button type="submit" id="confirmarBtn" class="servico-button">Confirmar Agendamento</button>
       </form>
       <div id="detalhesAgendamento"></div>
     </div>

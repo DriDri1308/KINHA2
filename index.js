@@ -2,12 +2,12 @@ const express = require('express');
 const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
-const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Configuração da sessão
+app.use(express.static('public'));
+
 app.use(session({
   secret: 'seuSegredo',
   resave: false,
@@ -19,13 +19,12 @@ app.use(bodyParser.json());
 
 const users = {
   'dona': {
-    passwordHash: bcrypt.hashSync('senha', 10) // Hash da senha para a dona
+    passwordHash: bcrypt.hashSync('senha', 10)
   }
 };
 
-let agendamentos = []; // Array para armazenar os agendamentos
+let agendamentos = [];
 
-// Middleware para proteger rotas
 function authMiddleware(req, res, next) {
   if (req.session.user) {
     next();
@@ -34,7 +33,6 @@ function authMiddleware(req, res, next) {
   }
 }
 
-// Rota para login
 app.post('/login', (req, res) => {
   const { username, password } = req.body;
   const user = users[username];
@@ -47,31 +45,31 @@ app.post('/login', (req, res) => {
   }
 });
 
-// Rota para logout
 app.post('/logout', (req, res) => {
   req.session.destroy();
   res.send('Logout bem-sucedido');
 });
 
-// Rota para agendar
 app.post('/agendar', (req, res) => {
   const { nome, telefone, horario, data } = req.body;
   agendamentos.push({ nome, telefone, horario, data });
   res.send('Agendamento confirmado');
 });
 
-// Rota para cancelar agendamento (protegida)
 app.post('/cancelar', authMiddleware, (req, res) => {
   const { horario, data } = req.body;
-  agendamentos = agendamentos.filter(agendamento => agendamento.horario !== horario || agendamento.data !== data);
+  agendamentos = agendamentos.filter(
+    agendamento => agendamento.horario !== horario || agendamento.data !== data
+  );
   res.send('Agendamento cancelado');
 });
 
-// Rota para obter agendamentos
 app.get('/agendamentos', (req, res) => {
   res.json(agendamentos);
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor rodando na porta ${PORT}`);
+app.listen(PORT, async () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+  const open = await import('open');  // Import dinâmico
+  open.default(`http://localhost:${PORT}`);
 });

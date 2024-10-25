@@ -52,22 +52,48 @@ body, html {
   z-index: 3;
 }
 
+/* Estilo do botão de Agendamento */
 #btnAgendamento {
   padding: 10px 80px;
   font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #9e2360;
-  color: rgb(16, 10, 10);
+  background-color: #ff3385; /* Cor do botão selecionado */
+  color: white; /* Altere a cor do texto conforme necessário */
   transition: background-color 0.3s, color 0.3s;
   z-index: 4;
 }
 
 #btnAgendamento:hover {
-  background-color: rgba(168, 53, 160, 0.8);
+  background-color: #ff3385; /* Cor do botão selecionado */
+  color: #ffffff; /* Cor do texto do botão selecionado */
 }
 
+/* Estilo do botão Admin */
+#adminBtn {
+  padding: 10px 20px; /* Mantém o tamanho original do botão admin */
+  font-size: 10px; /* Tamanho da fonte original */
+  cursor: pointer;
+  background-color: #ff66b2; /* Cor de fundo rosa */
+  color: white; /* Altere a cor do texto conforme necessário */
+  border: none;
+  border-radius: 20px;
+  transition: background-color 0.3s;
+
+  /* Ajuste para manter posição fixa e proporcional em qualquer tela */
+  position: fixed;
+  bottom: 6%; /* Sempre a 5% da parte inferior */
+  right: 20%;  /* Sempre a 5% da borda direita */
+  z-index: 4; /* Garante que o botão esteja acima de outros elementos */
+}
+
+#adminBtn:hover {
+  background-color: #ff3385; /* Cor do botão selecionado */
+  color: #ffffff; /* Cor do texto do botão selecionado */
+}
+
+/* Rodapé */
 footer {
   background-color: rgb(12, 10, 10);
   color: white;
@@ -88,18 +114,17 @@ footer p {
   display: flex;              /* Mantém o texto e a imagem em linha */
   justify-content: center;    /* Centraliza o conteúdo horizontalmente */
   align-items: center;        /* Alinha o texto e a imagem verticalmente */
-  margin: 20px 0;            /* Adiciona espaço acima e abaixo para separar do botão */
-  z-index: 3;                /* Garante que a div esteja acima da imagem de fundo */
+  margin: 20px 0;             /* Adiciona espaço acima e abaixo para separar do botão */
+  z-index: 3;                 /* Garante que a div esteja acima da imagem de fundo */
   text-align: center;         /* Centraliza o texto dentro da div */
   width: 100%;                /* Garante que a div ocupe toda a largura disponível */
   position: absolute;         /* Para que possamos posicioná-lo abaixo do botão */
-  top: calc(30% + 40px);     /* Ajusta a posição vertical para ficar abaixo do botão */
+  top: calc(30% + 40px);      /* Ajusta a posição vertical para ficar abaixo do botão */
 }
-
 
 .social-icons p {
   margin: 0;                 /* Remove margens do parágrafo */
-  color: rgb(18, 9, 9);              /* Cor do texto */
+  color: rgb(18, 9, 9);      /* Cor do texto */
   font-size: 16px;           /* Tamanho da fonte */
   white-space: nowrap;       /* Evita que o texto quebre em várias linhas */
 }
@@ -109,23 +134,4 @@ footer p {
   width: 30px;               /* Largura da imagem */
   height: 30px;              /* Altura da imagem */
   margin-left: 5px;          /* Um pequeno espaço à esquerda do ícone */
-}
-
-#adminBtn {
-  padding: 10px 20px;
-  font-size: 10px;
-  cursor: pointer;
-  background-color: transparent; /* Remove fundo visível */
-  color: rgb(12, 9, 9);
-  border: none; /* Remove a borda */
-  transition: color 0.3s;
-  position: absolute; /* Mantém o posicionamento */
-  bottom: -250px; /* 1px sobre a linha do footer */
-  right: 480px; /* Alinha à direita */
-}
-
-
-
-#adminBtn:hover {
-  background-color: rgba(233, 238, 243, 0.8); /* Efeito de hover */
 }
