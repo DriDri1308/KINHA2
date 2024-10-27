@@ -20,13 +20,15 @@ body, html {
   text-align: center;
   width: 100%;
   height: 100vh; /* Usa 100% da altura da tela */
-  background-image: url('assets/manicure-ferramentas-para-criar-polidores-de-gel-tudo-para-o-tratamento-de-unhas-o-conceito-de-beleza-cuidado-banner-de-salao-fundo-rosa-700-142961653.jpg');
-  background-size: cover; /* Faz com que a imagem cubra toda a tela */
+  background-image: url('assets/contato.jpg'); /* Caminho da imagem */
+  background-size: contain; /* A imagem mantém seu tamanho real */
   background-position: center; /* Centraliza a imagem */
   background-repeat: no-repeat; /* Não repete a imagem */
+  background-color: black; /* Fundo de cor caso a imagem não preencha toda a área */
   color: white;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra do texto */
 }
+
 
 /* Estilos para telas menores */
 @media (max-width: 768px) {

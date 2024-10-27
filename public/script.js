@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const servicos = [
-    { id: 1, title: 'Manicure e Pedicure', price: 60.00, img: 'assets/manicure e pedicure.jpg' },
-    { id: 2, title: 'Fibra de Vidro', price: 150.00, img: 'assets/fibra de vidro.jpg' },
+    { id: 1, title: 'Manicure e Pedicure', price: 63.00, img: 'assets/manicure e pedicure.jpg' },
+    { id: 2, title: 'Pé com francesinha ou simples ', price: 38,  img: 'assets/gel na tips.png' },
     { id: 3, title: 'Gel na Tips', price: 120.00, img: 'assets/gel na tips.png' },
     { id: 4, title: 'Banho de Gel', price: 85.00, img: 'assets/banho de gel.png' },
     { id: 5, title: 'Postiça Realista', price: 70.00, img: 'assets/postiça realista.png' },
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (btnAgendamento) {
     btnAgendamento.addEventListener('click', () => {
-      window.location.href = 'servicos.html'; // Redireciona para servicos.html
+      window.location.href = 'servicos.html';
     });
   }
 
@@ -76,15 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('Selecione pelo menos um serviço.');
         return;
       }
-
-      const dataAgendada = document.getElementById('dataSelecionada').value; // Captura a data agendada
-      const horarioSelecionado = prompt('Digite o horário selecionado (formato HH:MM):'); // Captura o horário selecionado
-
-      // Salva o agendamento no localStorage
-      const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-      agendamentos.push({ data: dataAgendada, horario: horarioSelecionado }); // Armazena a data e o horário
-      localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
-
       localStorage.setItem('servicosSelecionados', JSON.stringify(servicosSelecionados));
       localStorage.setItem('valorTotal', valorTotal.toFixed(2));
       window.location.href = 'contato.html';
@@ -104,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function mostrarAgendamentos() {
     const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
-
     if (agendamentos.length === 0) {
       alert('Não há agendamentos registrados.');
       return;
@@ -112,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let listaAgendamentos = 'Agendamentos:\n';
     agendamentos.forEach((agendamento, index) => {
-      listaAgendamentos += `${index + 1}. ${agendamento.data} - ${agendamento.horario}\n`; // Exibe data e horário
+      listaAgendamentos += `${index + 1}. ${agendamento.data} - ${agendamento.horario}\n`;
     });
 
     const cancelar = confirm(`${listaAgendamentos}\nDeseja cancelar algum agendamento?`);
@@ -122,8 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
         agendamentos.splice(indice, 1);
         localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
         alert('Agendamento cancelado com sucesso!');
-        
-        // Aqui você pode adicionar a lógica para atualizar a disponibilidade de data/hora
       } else {
         alert('Número inválido.');
       }
