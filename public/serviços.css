@@ -10,21 +10,21 @@ body, html {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* Alinha os itens em coluna */
+  justify-content: flex-end; /* Alinha o conteúdo na parte inferior */
+  align-items: center; /* Centraliza horizontalmente */
   overflow: hidden;
 }
 
 .full-screen-background {
   position: fixed;
-  top: 50%; /* Centraliza verticalmente */
-  left: 50%; /* Centraliza horizontalmente */
-  transform: translate(-50%, -50%); /* Move para o centro exato */
-  width: calc(100vw + 10px); /* Aumenta a largura em 10px */
-  height: calc(100vh + 10px); /* Aumenta a altura em 10px */
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh; 
   background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
-  background-size: cover; /* Cobre a tela inteira */
-  z-index: 0; /* Fica atrás de tudo */
+  background-size: cover; 
+  z-index: 0; 
 }
 
 /* Imagem de background sobre a principal */
@@ -35,18 +35,19 @@ body, html {
   width: 100vw;
   height: 100vh;
   background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
-  background-size: contain; /* Mantém a proporção da imagem sem cortes */
-  z-index: 1; /* Fica sobre a imagem principal, mas atrás dos botões */
+  background-size: contain; 
+  z-index: 1; 
 }
 
 /* Container dos botões */
 .button-container {
   position: relative;
-  z-index: 2; /* Sobrepõe a imagem de fundo */
+  z-index: 2; 
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: center; /* Centraliza horizontalmente os botões */
+  gap: 2px; /* Espaçamento entre os botões */
+  padding-bottom: 2px; /* Espaço de 2px na parte inferior */
 }
 
 /* Cada serviço com botão e imagem */
@@ -55,32 +56,36 @@ body, html {
   align-items: center;
   gap: 5px;
   width: 100%;
-  max-width: 500px;
+  max-width: 600px;
 }
 
 /* Estilo dos botões */
 .servico-button {
-  width: 200px; /* Largura fixa */
-  height: 50px; /* Altura fixa */
-  padding: 10px; /* Padding fixo */
+  width: 200px; 
+  height: 50px; 
+  padding: 0; /* Remove o padding para o texto ficar centralizado */
   font-size: 15px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #ff66b2; /* Cor de fundo rosa */
-  color: #000000; /* Cor do texto preto */
+  background-color: #ff66b2; 
+  color: #000000; 
   transition: background-color 0.3s, color 0.3s;
-  text-align: center; /* Centraliza o texto */
-  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
+  text-align: center; /* Centraliza o texto horizontalmente */
+  font-family: 'Dancing Script', cursive; 
+  line-height: 50px; /* Centraliza o texto verticalmente */
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+  white-space: nowrap; 
 }
 
-.servico-button.selecionado { /* Adiciona classe para botão selecionado */
-  background-color: #ff3385; /* Cor do botão selecionado */
-  color: #ffffff; /* Cor do texto do botão selecionado */
+.servico-button.selecionado { 
+  background-color: #ff3385; 
+  color: #ffffff; 
 }
 
 .servico-button:hover {
-  background-color: #ff3385; /* Cor do botão ao passar o mouse */
+  background-color: #ff3385; 
 }
 
 /* Estilo das imagens */
@@ -89,39 +94,44 @@ body, html {
   height: 50px;
   object-fit: cover;
   border-radius: 8px;
-  margin: 3px; /* Adiciona margem em torno da imagem */
+  margin: 3px; 
 }
 
 /* Botão de confirmação */
 #btnConfirmar {
-  margin-top: 20px;
+  margin-top: 0; /* Remove qualquer margem superior para deixar 2px da borda inferior */
   padding: 15px 30px;
   font-size: 16px;
   cursor: pointer;
   border: none;
   border-radius: 20px;
-  background-color: #ff66b2; /* Cor igual aos botões de serviço */
-  color: #000000; /* Cor do texto igual aos botões de serviço */
+  background-color: #ff66b2; 
+  color: #000000; 
   transition: background-color 0.3s, color 0.3s;
   width: 100%;
   max-width: 200px;
-  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
+  font-family: 'Dancing Script', cursive; 
 }
 
 #btnConfirmar:hover {
-  background-color: #ff3385; /* Cor do botão de confirmação igual ao selecionado */
-  color: #ffffff; /* Cor do texto ao passar o mouse */
+  background-color: #ff3385; 
+  color: #ffffff; 
 }
 
 /* Ajustes para garantir que tudo se mantenha igual em telas menores */
 @media (max-width: 768px) {
   .full-screen-background {
-    width: 100vw; /* Largura total em dispositivos menores */
-    height: 100vh; /* Altura total em dispositivos menores */
+    width: 100vw; 
+    height: 100vh; 
   }
   
+  .button-container {
+    gap: 10px; /* Mantém o espaçamento maior entre os botões */
+  }
+
   .servico-button {
-    padding: 8px 12px; /* Diminui o padding dos botões para telas menores */
+    width: 150px; /* Ajusta a largura dos botões em telas menores */
+    height: 40px; /* Ajusta a altura dos botões em telas menores */
     font-size: 14px; /* Ajusta o tamanho da fonte dos botões */
   }
 
@@ -130,4 +140,3 @@ body, html {
     height: 40px; /* Diminui a altura das imagens dos serviços */
   }
 }
-

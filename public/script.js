@@ -1,11 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
   const servicos = [
-    { id: 1, title: 'Manicure e Pedicure', price: 63.00, img: 'assets/manicure e pedicure.jpg' },
-    { id: 2, title: 'Pé com francesinha ou simples ', price: 38,  img: 'assets/gel na tips.png' },
-    { id: 3, title: 'Gel na Tips', price: 120.00, img: 'assets/gel na tips.png' },
-    { id: 4, title: 'Banho de Gel', price: 85.00, img: 'assets/banho de gel.png' },
-    { id: 5, title: 'Postiça Realista', price: 70.00, img: 'assets/postiça realista.png' },
-    { id: 6, title: 'Spa nos Pés', price: 80.00, img: 'assets/spar dos pes.jpg' }
+    { id: 1, title: 'Manicure e Pedicure', price: 63.00, img: 'assets/mp.jpg' },
+    { id: 2, title: 'Pé com francesinha', price: 38.00, img: 'assets/francesinha.jpg' },
+    { id: 3, title: 'Gel na Tips', price: 150.00, img: 'assets/tips.jpg' },
+    { id: 4, title: 'Manutenção', price: 110.00, img: 'assets/tips.jpg' },
+    { id: 5, title: 'Banho de Gel', price: 85.00, img: 'assets/gel.jpg' },
+    { id: 6, title: 'Postiça Realista', price: 85.00, img: 'assets/realista.jpg' },
+    { id: 7, title: 'Plástica dos Pés', price: 85.00, img: 'assets/pp.WEBP' }
   ];
 
   const btnAgendamento = document.getElementById('btnAgendamento');
@@ -119,4 +120,39 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   criarBotoesDeServico();
+});
+
+// Aqui deve estar o código de contato.js ou contato.jsx
+
+document.addEventListener('DOMContentLoaded', () => {
+  const btnFinalizar = document.getElementById('btnFinalizar'); // Certifique-se de que o ID do botão de finalizar está correto.
+
+  btnFinalizar.addEventListener('click', () => {
+    const data = document.getElementById('inputData').value; // Substitua pelo ID do seu campo de data.
+    const horario = document.getElementById('inputHorario').value; // Substitua pelo ID do seu campo de horário.
+
+    // Verifique se os campos de data e horário estão preenchidos.
+    if (!data || !horario) {
+      alert('Por favor, preencha a data e o horário.');
+      return;
+    }
+
+    // Recupera os serviços selecionados do localStorage.
+    const servicosSelecionados = JSON.parse(localStorage.getItem('servicosSelecionados')) || [];
+    const agendamentos = JSON.parse(localStorage.getItem('agendamentos')) || [];
+
+    // Cria um novo agendamento.
+    const novoAgendamento = {
+      data: data,
+      horario: horario,
+      servicos: servicosSelecionados,
+    };
+
+    // Adiciona o novo agendamento à lista de agendamentos.
+    agendamentos.push(novoAgendamento);
+    localStorage.setItem('agendamentos', JSON.stringify(agendamentos));
+
+    alert('Agendamento realizado com sucesso!');
+    window.location.href = 'index.html'; // Redireciona para a página inicial.
+  });
 });
