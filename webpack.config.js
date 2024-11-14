@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path'); // Importar o módulo 'path'
 
 module.exports = {
   entry: './src/index.js', // Ponto de entrada

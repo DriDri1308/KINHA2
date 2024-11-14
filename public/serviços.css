@@ -2,141 +2,174 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;    
-  font-family: Arial, sans-serif;
+  box-sizing: border-box;
 }
 
-body, html {
-  height: 100%;
-  width: 100%;
+/* Estilo geral */
+body {
+  font-family: 'Dancing Script', cursive;
+  background-color: #f8f9fa;
   display: flex;
-  flex-direction: column; /* Alinha os itens em coluna */
-  justify-content: flex-end; /* Alinha o conteúdo na parte inferior */
-  align-items: center; /* Centraliza horizontalmente */
-  overflow: hidden;
-}
-
-.full-screen-background {
-  position: fixed;
-  top: 0; 
-  left: 0; 
-  width: 100vw; 
-  height: 100vh; 
-  background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
-  background-size: cover; 
-  z-index: 0; 
-}
-
-/* Imagem de background sobre a principal */
-.background-image {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: url('assets/Imagem%20do%20WhatsApp%20de%202024-10-19%20à(s)%2023.13.30_916fde1e.jpg') no-repeat center center;
-  background-size: contain; 
-  z-index: 1; 
-}
-
-/* Container dos botões */
-.button-container {
-  position: relative;
-  z-index: 2; 
-  display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
-  align-items: center; /* Centraliza horizontalmente os botões */
-  gap: 2px; /* Espaçamento entre os botões */
-  padding-bottom: 2px; /* Espaço de 2px na parte inferior */
+  background-image: url('assets/capaserviços.jpg'); /* Caminho da imagem atualizado */
+  min-height: 100vh; /* Garante que o corpo tenha pelo menos a altura da tela */
+  position: relative; /* Para garantir que os elementos fiquem sobre a imagem */
+  padding: 0 20px; /* Adiciona um espaçamento lateral */
+  overflow-y: auto; /* Habilita a rolagem vertical quando o conteúdo exceder */
+  width: 100%; /* Garante que o conteúdo ocupe toda a largura da tela */
+  text-align: center; /* Garante que o texto seja centralizado no corpo */
 }
 
-/* Cada serviço com botão e imagem */
+/* Fundo de imagem */
+
+  .background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets\fundo.jpg');
+    background-size: contain; /* Garante que a imagem inteira seja exibida */
+    background-position: center; /* Centraliza a imagem */
+    background-repeat: no-repeat; /* Impede a repetição */
+    z-index: -1;
+  }
+
+/* Estilo dos serviços */
 .servico-item {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 20px;
+  padding: 15px;
+  margin: 15px 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 600px;
+  max-width: 800px; /* Limite de largura para o layout */
 }
 
-/* Estilo dos botões */
+/* Imagem do serviço */
+.servico-img {
+  width: 120px; /* Tamanho fixo */
+  height: 120px;
+  object-fit: cover; /* Ajusta sem distorção */
+  border-radius: 8px;
+}
+
+/* Conteúdo do serviço */
+.servico-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  justify-content: space-between; /* Para garantir que o preço e o título fiquem em linha */
+  height: 100%; /* Para garantir que a altura do conteúdo ocupe todo o espaço disponível */
+}
+
+/* Título do serviço */
+.servico-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  white-space: nowrap; /* Impede que o título quebre a linha */
+  overflow: hidden; /* Garante que o texto não ultrapasse o limite */
+  text-overflow: ellipsis; /* Adiciona reticências se o texto for longo */
+}
+
+/* Preço do serviço */
+.servico-price {
+  font-size: 1.2rem;
+  color: #007bff;
+  white-space: nowrap; /* Impede que o preço quebre a linha */
+  margin-bottom: 10px; /* Espaço entre o preço e o botão */
+  align-self: flex-start; /* Garante que o preço fique alinhado à esquerda */
+}
+
+/* Descrição do serviço */
+.servico-description {
+  font-size: 1rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+/* Botão de serviço */
 .servico-button {
-  width: 200px; 
-  height: 50px; 
-  padding: 0; /* Remove o padding para o texto ficar centralizado */
-  font-size: 15px;
-  cursor: pointer;
+  padding: 10px 15px;
+  background-color: #ff66b2;
+  color: white;
   border: none;
-  border-radius: 20px;
-  background-color: #ff66b2; 
-  color: #000000; 
-  transition: background-color 0.3s, color 0.3s;
-  text-align: center; /* Centraliza o texto horizontalmente */
-  font-family: 'Dancing Script', cursive; 
-  line-height: 50px; /* Centraliza o texto verticalmente */
-  overflow: hidden; 
-  text-overflow: ellipsis; 
-  white-space: nowrap; 
-}
-
-.servico-button.selecionado { 
-  background-color: #ff3385; 
-  color: #ffffff; 
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s;
 }
 
 .servico-button:hover {
-  background-color: #ff3385; 
+  background-color: #ff3385;
+  transform: scale(1.05);
 }
 
-/* Estilo das imagens */
-.servico-img {
-  width: 70px;
-  height: 50px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 3px; 
-}
-
-/* Botão de confirmação */
-#btnConfirmar {
-  margin-top: 0; /* Remove qualquer margem superior para deixar 2px da borda inferior */
-  padding: 15px 30px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 20px;
-  background-color: #ff66b2; 
-  color: #000000; 
-  transition: background-color 0.3s, color 0.3s;
-  width: 100%;
-  max-width: 200px;
-  font-family: 'Dancing Script', cursive; 
-}
-
-#btnConfirmar:hover {
-  background-color: #ff3385; 
-  color: #ffffff; 
-}
-
-/* Ajustes para garantir que tudo se mantenha igual em telas menores */
-@media (max-width: 768px) {
-  .full-screen-background {
-    width: 100vw; 
-    height: 100vh; 
+/* Responsividade */
+@media (max-width: 480px) {
+  body {
+    padding: 0 5px; /* Reduz o espaçamento lateral para telas muito pequenas */
   }
-  
-  .button-container {
-    gap: 10px; /* Mantém o espaçamento maior entre os botões */
+
+  /* Ajustes para os itens de serviço */
+  .servico-img {
+    width: 100px; /* Ajusta o tamanho da imagem do serviço */
+    height: 100px;
+  }
+
+  .servico-title {
+    font-size: 1.2rem; /* Diminuímos um pouco o tamanho da fonte */
+  }
+
+  .servico-price {
+    font-size: 1rem;
+  }
+
+  .servico-description {
+    font-size: 0.9rem; /* Fonte um pouco menor */
   }
 
   .servico-button {
-    width: 150px; /* Ajusta a largura dos botões em telas menores */
-    height: 40px; /* Ajusta a altura dos botões em telas menores */
-    font-size: 14px; /* Ajusta o tamanho da fonte dos botões */
+    font-size: 0.9rem;
+    padding: 8px 12px;
   }
 
-  .servico-img {
-    width: 60px; /* Diminui a largura das imagens dos serviços */
-    height: 40px; /* Diminui a altura das imagens dos serviços */
+  /* Garantir que o título h1 e outros elementos não quebrem a linha */
+  h1 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
   }
+
+  .btn-confirmar {
+    width: 100%; /* Garante que o botão ocupe a largura total */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto; /* Centraliza o botão */
+  }
+}
+
+/* Estilo do título da página */
+.titulo {
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  margin-top: 50px;
+  z-index: 1;
+}
+
+/* Título principal */
+h1 {
+  font-size: 2rem;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }

@@ -73,18 +73,18 @@ body, html {
 /* Estilo do botão Admin */
 #adminBtn {
   padding: 10px 20px; /* Mantém o tamanho original do botão admin */
-  font-size: 10px; /* Tamanho da fonte original */
+  font-size: 6px; /* Tamanho da fonte original */
   cursor: pointer;
   background-color: #ff66b2; /* Cor de fundo rosa */
   color: white; /* Altere a cor do texto conforme necessário */
   border: none;
-  border-radius: 20px;
+  border-radius: 18px;
   transition: background-color 0.3s;
 
   /* Ajuste para manter posição fixa e proporcional em qualquer tela */
   position: fixed;
-  bottom: 6%; /* Sempre a 5% da parte inferior */
-  right: 20%;  /* Sempre a 5% da borda direita */
+  bottom: 11%; /* Sempre a 5% da parte inferior */
+  right: 6%;  /* Sempre a 5% da borda direita */
   z-index: 4; /* Garante que o botão esteja acima de outros elementos */
 }
 

@@ -1,18 +1,21 @@
 // src/firebase.js
 import firebase from 'firebase/app';
-import 'firebase/firestore';
+import 'firebase/database'; // Altere para usar o Realtime Database
 
 const firebaseConfig = {
-  apiKey: "SUA_API_KEY",
-  authDomain: "SEU_AUTH_DOMAIN",
-  projectId: "SEU_PROJECT_ID",
-  storageBucket: "SEU_STORAGE_BUCKET",
-  messagingSenderId: "SEU_MESSAGING_SENDER_ID",
-  appId: "SEU_APP_ID"
+  apiKey: "AIzaSyAxrVoHGgSTyLbIis_uQFaNpWjZiO518Q0",
+  authDomain: "erica-unhas-designer.firebaseapp.com",
+  projectId: "erica-unhas-designer",
+  storageBucket: "erica-unhas-designer.appspot.com",
+  messagingSenderId: "179763257277",
+  appId: "1:179763257277:web:b0f3adcd4f142660d77cd4",
+  measurementId: "G-WYKT2WSXHM"
 };
 
 // Inicializa o Firebase
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-const db = firebaseApp.firestore();
 
-export { db };
+// Usando o Realtime Database
+const db = firebaseApp.database(); // Alterado para acessar o Realtime Database
+
+export { db }; 

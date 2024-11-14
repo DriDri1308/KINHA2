@@ -29,7 +29,6 @@ body, html {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra do texto */
 }
 
-
 /* Estilos para telas menores */
 @media (max-width: 768px) {
   .App {
@@ -119,25 +118,23 @@ label {
   background-color: #ff3385; /* Cor do botão ao passar o mouse */
 }
 
-/* Botões de Data e Horário */
-.data-button,
-.horario-button {
-  flex: 1; /* Altera a largura para ocupar igualmente o espaço */
-  padding: 5px 10px; /* Reduz o padding para deixar o botão menor */
-  font-size: 14px; /* Ajusta o tamanho da fonte, se necessário */
+/* Botões de Data */
+.data-button {
+  flex: 1; /* Ocupam o espaço igualmente */
+  padding: 5px 10px; /* Reduz o padding */
+  font-size: 16px; /* Tamanho da fonte ajustado */
   cursor: pointer;
   border: none;
-  border-radius: 10px; /* Reduz o arredondamento das bordas */
-  background-color: #ff66b2; /* Cor de fundo rosa */
-  color: #000000; /* Cor do texto preto */
-  transition: background-color 0.3s, color 0.3s; /* Efeitos de transição */
-  text-align: left;
-  font-family: 'Dancing Script', cursive; /* Adiciona a fonte script */
+  border-radius: 50%; /* Mantém os botões arredondados */
+  background-color: #ff66b2; /* Cor do botão rosa */
+  color: #000000; /* Texto preto */
+  text-align: center; /* Centraliza texto nos botões */
+  font-family: 'Dancing Script', cursive; /* Fonte estilizada */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.data-button:hover,
-.horario-button:hover {
-  background-color: #ff3385; /* Cor do botão ao passar o mouse */
+.data-button:hover {
+  background-color: #ff3385; /* Tom mais escuro no hover */
 }
 
 /* Mensagem de detalhes */
@@ -155,6 +152,34 @@ label {
   justify-content: center; /* Centraliza verticalmente */
   width: 90%; /* Largura total */
   gap: 20px; /* Espaço entre os botões */
+}
+
+/* Estilo para o calendário */
+.calendario-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.calendario-dia {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 50%;
+  background-color: #ff66b2; /* Cor de fundo rosa */
+  color: #000000; /* Cor do texto preto */
+  cursor: pointer;
+  font-family: 'Dancing Script', cursive;
+  font-size: 14px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.calendario-dia:hover {
+  background-color: #ff3385; /* Cor do botão ao passar o mouse */
 }
 
 /* Responsividade */
