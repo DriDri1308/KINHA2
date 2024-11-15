@@ -1,4 +1,3 @@
-
 document.addEventListener('DOMContentLoaded', function () {
   const servicosSelecionados = JSON.parse(localStorage.getItem('servicosSelecionados')) || [];
   const valorTotal = localStorage.getItem('valorTotal') || '0.00';
@@ -151,4 +150,40 @@ document.addEventListener('DOMContentLoaded', function () {
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
     window.open(url, '_blank');
   }
+
+  // Adicionando o código de gestos de toque
+  let x1 = null;
+  let y1 = null;
+
+  document.getElementById('datasDisponiveis').addEventListener('touchstart', handleTouchStart, false);
+  document.getElementById('datasDisponiveis').addEventListener('touchmove', handleTouchMove, false);
+
+  function handleTouchStart(event) {
+    const firstTouch = event.touches[0];
+    x1 = firstTouch.clientX;
+    y1 = firstTouch.clientY;
+  }
+
+  function handleTouchMove(event) {
+    if (!x1 || !y1) {
+      return;
+    }
+
+    let x2 = event.touches[0].clientX;
+    let y2 = event.touches[0].clientY;
+    let xDiff = x2 - x1;
+    let yDiff = y2 - y1;
+
+    if (Math.abs(xDiff) > Math.abs(yDiff)) {
+      event.preventDefault(); // Previne o comportamento de rolagem vertical
+      if (xDiff > 0) {
+        // Deslizar para a direita
+      } else {
+        // Deslizar para a esquerda
+      }
+    }
+    x1 = null;
+    y1 = null;
+  }
+
 });

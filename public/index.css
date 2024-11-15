@@ -54,21 +54,30 @@ body, html {
 
 /* Estilo do botão de Agendamento */
 #btnAgendamento {
-  padding: 10px 80px;
-  font-size: 16px;
+  display: block;
+  width: 100%; /* Ajusta a largura do botão */
+  margin: 20px auto; /* Centraliza o botão */
+  font-size: 16px; /* Ajuste de tamanho de fonte */
+  padding: 10px 20px; /* Ajusta o espaçamento interno */
+  border-radius: 25px; /* Borda arredondada */
+  background-color: #ff66b2; /* Cor de fundo */
+  color: #fff; /* Cor do texto */
+  text-align: center;
   cursor: pointer;
-  border: none;
-  border-radius: 20px;
-  background-color: #ff3385; /* Cor do botão selecionado */
-  color: white; /* Altere a cor do texto conforme necessário */
-  transition: background-color 0.3s, color 0.3s;
-  z-index: 4;
+  transition: background-color 0.3s ease; /* Transição suave para a cor de fundo */
 }
 
 #btnAgendamento:hover {
-  background-color: #ff3385; /* Cor do botão selecionado */
-  color: #ffffff; /* Cor do texto do botão selecionado */
+  background-color: #ff3385; /* Cor ao passar o mouse */
 }
+
+@media (max-width: 600px) {
+  #btnAgendamento {
+    width: 90%; /* Ajusta a largura em telas pequenas */
+    font-size: 14px; /* Ajuste de fonte */
+  }
+}
+
 
 /* Estilo do botão Admin */
 #adminBtn {
