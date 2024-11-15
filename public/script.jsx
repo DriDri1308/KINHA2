@@ -1,3 +1,4 @@
+
 document.addEventListener('DOMContentLoaded', function () {
   const servicosSelecionados = JSON.parse(localStorage.getItem('servicosSelecionados')) || [];
   const valorTotal = localStorage.getItem('valorTotal') || '0.00';

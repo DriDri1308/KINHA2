@@ -1,6 +1,6 @@
 // src/firebase.js
-import firebase from 'firebase/app';
-import 'firebase/database'; // Altere para usar o Realtime Database
+import { initializeApp } from 'firebase/app';
+import { getDatabase, ref, push, set } from 'firebase/database';
 
 const firebaseConfig = {
   apiKey: "AIzaSyAxrVoHGgSTyLbIis_uQFaNpWjZiO518Q0",
@@ -12,10 +12,10 @@ const firebaseConfig = {
   measurementId: "G-WYKT2WSXHM"
 };
 
-// Inicializa o Firebase
-const firebaseApp = firebase.initializeApp(firebaseConfig);
+// Inicializando o Firebase
+const firebaseApp = initializeApp(firebaseConfig);
 
 // Usando o Realtime Database
-const db = firebaseApp.database(); // Alterado para acessar o Realtime Database
+const db = getDatabase(firebaseApp);
 
-export { db }; 
+export { db, ref, push, set };

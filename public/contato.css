@@ -19,7 +19,7 @@ body, html {
   justify-content: center;
   text-align: center;
   width: 100%;
-  height: 100vh; /* Usa 100% da altura da tela */
+  height: 100%; /* Usa 100% da altura da tela */
   background-image: url('assets/contato.jpg'); /* Caminho da imagem */
   background-size: contain; /* A imagem mantém seu tamanho real */
   background-position: center; /* Centraliza a imagem */

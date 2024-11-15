@@ -28,11 +28,26 @@
           <div id="horariosContainer" style="display: none;"></div>
         </div>
 
+        <!-- O botão de confirmação do agendamento -->
         <button type="submit" id="confirmarBtn" class="servico-button">Confirmar Agendamento</button>
       </form>
-      <div id="detalhesAgendamento"></div>
+
+      <!-- Exibe os detalhes do agendamento após confirmação -->
+      <div id="detalhesAgendamento" class="detalhes-agendamento" style="display: none;">
+        <h3>Resumo do Agendamento</h3>
+        <div id="listaServicosSelecionados"></div>
+        <p><strong>Total a pagar: </strong><span id="totalPagamento"></span></p>
+      </div>
+
+      <!-- Exibição dos agendamentos -->
+      <div id="agendamentos-list">
+        <h3>Serviços Selecionados:</h3>
+        <!-- Os serviços agendados serão inseridos aqui pelo JavaScript -->
+      </div>
     </div>
   </div>
+
+  <!-- Importando o script JS para carregar os dados e funcionalidades -->
   <script src="script.jsx"></script>
 </body>
 </html>
